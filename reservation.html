@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0B0D14">
+  <title>Резервация · Mala Muerte</title>
+  <meta name="description" content="Забронируйте столик в Mala Muerte онлайн. Пятница и суббота — бронь обязательна.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/pages/reservation.css">
+</head>
+<body>
+
+<a href="#main" class="skip-link">Пропустить к содержимому</a>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="index.html" class="site-header__logo">Mala<span>·</span><em>Muerte</em></a>
+    <nav class="site-nav" aria-label="Основное меню">
+      <a href="index.html"       class="site-nav__link">Главная<small>Inicio</small></a>
+      <a href="menu.html"        class="site-nav__link">Меню<small>Carta</small></a>
+      <a href="team.html"        class="site-nav__link">Команда<small>Equipo</small></a>
+      <a href="reservation.html" class="site-nav__link" aria-current="page">Резервация<small>Reserva</small></a>
+      <a href="contacts.html"    class="site-nav__link">Контакты<small>Contacto</small></a>
+    </nav>
+    <div class="site-header__cta"><a href="tel:+70000000000" class="btn btn--ghost">Позвонить</a></div>
+    <button class="site-header__toggle" aria-label="Открыть меню" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="reservation">
+  <div class="reservation__grid">
+
+    <div>
+      <div class="reservation__intro">
+        <span class="eyebrow">Reserva tu mesa</span>
+        <h1>Забронируйте <em>стол, свечу</em> и вечер.</h1>
+        <p>Заполните форму — мы подтвердим бронь в течение 15 минут по WhatsApp или звонком. Вечером в пятницу и субботу рекомендуем бронировать за 3–5 дней.</p>
+      </div>
+
+      <form class="reserve-form" data-reservation-form novalidate>
+        <div class="reserve-form__grid">
+
+          <div class="field reserve-form__full">
+            <label for="name">Имя</label>
+            <input id="name" name="name" type="text" required placeholder="Как к вам обращаться" autocomplete="name">
+          </div>
+
+          <div class="field">
+            <label for="phone">Телефон</label>
+            <input id="phone" name="phone" type="tel" required placeholder="+7 (___) ___-__-__" autocomplete="tel">
+          </div>
+
+          <div class="field">
+            <label for="email">E-mail</label>
+            <input id="email" name="email" type="email" placeholder="optional" autocomplete="email">
+          </div>
+
+          <div class="field">
+            <label for="date">Дата</label>
+            <input id="date" name="date" type="date" required>
+          </div>
+
+          <div class="field">
+            <label for="time">Время</label>
+            <select id="time" name="time" required>
+              <option value="">Выберите время</option>
+              <option value="18:00">18:00</option>
+              <option value="18:30">18:30</option>
+              <option value="19:00">19:00</option>
+              <option value="19:30">19:30</option>
+              <option value="20:00">20:00</option>
+              <option value="20:30">20:30</option>
+              <option value="21:00">21:00</option>
+              <option value="21:30">21:30</option>
+              <option value="22:00">22:00</option>
+              <option value="22:30">22:30</option>
+              <option value="23:00">23:00</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="guests">Гостей</label>
+            <select id="guests" name="guests" required>
+              <option value="">Сколько вас будет</option>
+              <option>1 гость</option>
+              <option>2 гостя</option>
+              <option>3 гостя</option>
+              <option>4 гостя</option>
+              <option>5 гостей</option>
+              <option>6 гостей</option>
+              <option>7 гостей</option>
+              <option>8 гостей</option>
+              <option>9+ (банкет)</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="zone">Зона</label>
+            <select id="zone" name="zone">
+              <option>Основной зал</option>
+              <option>Бар (высокие стулья)</option>
+              <option>Booth privado</option>
+              <option>Зал с ofrenda</option>
+            </select>
+          </div>
+
+          <div class="field reserve-form__full">
+            <label for="note">Особый повод или пожелания</label>
+            <textarea id="note" name="note" placeholder="День рождения, годовщина, аллергии, встреча с привидением бабушки..."></textarea>
+          </div>
+
+        </div>
+
+        <div class="reserve-form__submit">
+          <button type="submit" class="btn btn--lg">Забронировать</button>
+          <p class="reserve-form__note">Это демо-форма. Для реальной брони напишите в WhatsApp или позвоните +7 (000) 000-00-00.</p>
+        </div>
+      </form>
+    </div>
+
+    <aside class="reservation__info">
+
+      <article class="info-card">
+        <h3>Что <em>вас ждёт</em></h3>
+        <ul>
+          <li><b>Встреча</b><span>Хостес Isabela проводит к вашему столу и расскажет о вечере</span></li>
+          <li><b>Свеча</b><span>Персональная свеча на столе, которую мы зажжём перед вашим приходом</span></li>
+          <li><b>Первый тост</b><span>Комплимент от бара — мескаль в мини-медной чашке</span></li>
+          <li><b>Сюрприз</b><span>Если повод особый — укажите в форме, подготовим</span></li>
+        </ul>
+      </article>
+
+      <article class="info-card">
+        <h3>Правила <em>дома</em></h3>
+        <ul>
+          <li><b>Бронь</b><span>Держим столик 15 минут. Опаздываете — позвоните, сохраним.</span></li>
+          <li><b>Отмена</b><span>Бесплатно до 4 часов до брони. Далее — 500 ₽ с гостя.</span></li>
+          <li><b>Депозит</b><span>Не берём. Только на события и банкеты от 8 человек.</span></li>
+          <li><b>Возраст</b><span>18+. Паспорт — всегда при себе.</span></li>
+          <li><b>Dress</b><span>Smart casual. Calaveras и вышитые рубахи — welcome.</span></li>
+        </ul>
+      </article>
+
+      <article class="info-card info-card--quote">
+        <p>Лучший стол — тот, к которому хочется вернуться. Мы стараемся, чтобы это был каждый стол.</p>
+        <cite>— Isabela, хостес</cite>
+      </article>
+
+    </aside>
+
+  </div>
+</section>
+
+<!-- ═══ Success modal ══════════════════════════════════ -->
+<div class="modal" data-reservation-modal aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal__inner">
+    <svg class="modal__calavera" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M32 6c-9 0-16 6.5-16 15 0 6 3 10 5 12v8l3-3 3 3 2-3 3 3 3-3 3 3v-8c2-2 5-6 5-12 0-8.5-7-15-16-15z"/>
+      <circle cx="26" cy="25" r="3.2" fill="currentColor" fill-opacity="0.28"/>
+      <circle cx="38" cy="25" r="3.2" fill="currentColor" fill-opacity="0.28"/>
+      <circle cx="26" cy="25" r="1.2" fill="currentColor"/>
+      <circle cx="38" cy="25" r="1.2" fill="currentColor"/>
+      <path d="M30 32l2 3 2-3"/>
+      <path d="M26 40h12M28 43h8M30 46h4"/>
+    </svg>
+    <span class="eyebrow" style="justify-content: center;">Espéranos</span>
+    <h2 id="modal-title">Мы вас <em>ждём.</em></h2>
+    <p>Заявка принята. Мы подтвердим бронь по указанному номеру в течение 15 минут. Свеча уже ждёт.</p>
+    <div class="modal__actions">
+      <button type="button" class="btn" data-close-modal>Хорошо</button>
+      <a href="menu.html" class="btn btn--ghost">Посмотреть меню</a>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__grid">
+    <div class="site-footer__brand">
+      <h3 class="display"><em>Mala</em> Muerte</h3>
+      <p>Авторский мескаль-бар в сердце Центра. Мы помним о смерти — чтобы праздновать жизнь громче.</p>
+    </div>
+    <div class="site-footer__col"><h6>Навигация</h6><ul>
+      <li><a href="index.html">Главная</a></li><li><a href="menu.html">Меню</a></li>
+      <li><a href="team.html">Команда</a></li><li><a href="reservation.html">Резервация</a></li>
+      <li><a href="contacts.html">Контакты</a></li>
+    </ul></div>
+    <div class="site-footer__col"><h6>Часы</h6><ul>
+      <li>Пн — Чт · 18:00 — 00:00</li><li>Пт — Сб · 18:00 — 02:00</li><li>Вс · 17:00 — 23:00</li>
+    </ul></div>
+    <div class="site-footer__col"><h6>Связаться</h6><ul>
+      <li><a href="tel:+70000000000">+7 (000) 000-00-00</a></li>
+      <li><a href="mailto:hola@mala-muerte.bar">hola@mala-muerte.bar</a></li>
+      <li><a href="#">Instagram</a></li><li><a href="#">Telegram</a></li>
+    </ul></div>
+  </div>
+  <div class="site-footer__bottom">
+    <span>© <span data-year>2026</span> Mala Muerte · 18+</span>
+    <span>Чрезмерное употребление алкоголя вредит здоровью</span>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>if (typeof ScrollTrigger !== 'undefined') gsap.registerPlugin(ScrollTrigger);</script>
+<script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>

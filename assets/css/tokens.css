@@ -1,0 +1,126 @@
+@layer tokens {
+  :root {
+    /* ─── Palette ─────────────────────────────────────── */
+    --ink:         #0B0D14;
+    --ink-soft:    #141826;
+    --ink-2:       #1B1F2E;
+    --bone:        #F5ECD9;
+    --bone-dim:    #CFC4AE;
+    --bone-muted:  #8A816F;
+
+    --gold:        #C9A961;
+    --gold-hi:     #E6C878;
+    --gold-deep:   #8E7539;
+
+    --marigold:    #E86A1C;
+    --marigold-hi: #F4873F;
+    --marigold-lo: #B24F10;
+
+    --teal:        #0E7C86;
+    --teal-hi:     #1CA2AE;
+    --teal-deep:   #084A51;
+
+    --crimson:     #B21E2C;
+    --crimson-hi:  #D63240;
+
+    --ok:          #2FA36A;
+    --warn:        #E0A43B;
+    --err:         #D63240;
+
+    /* ─── Typography ──────────────────────────────────── */
+    --font-display: "Cormorant Garamond", "Playfair Display", "Times New Roman", serif;
+    --font-serif:   "Playfair Display", "Cormorant Garamond", Georgia, serif;
+    --font-sans:    "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-mono:    "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+    /* Fluid type scale (min 320px → max 1920px) */
+    --step--2: clamp(0.72rem, 0.70rem + 0.08vw, 0.78rem);
+    --step--1: clamp(0.83rem, 0.80rem + 0.15vw, 0.94rem);
+    --step-0:  clamp(1.00rem, 0.95rem + 0.22vw, 1.13rem);
+    --step-1:  clamp(1.20rem, 1.11rem + 0.44vw, 1.50rem);
+    --step-2:  clamp(1.44rem, 1.28rem + 0.78vw, 2.00rem);
+    --step-3:  clamp(1.73rem, 1.47rem + 1.28vw, 2.66rem);
+    --step-4:  clamp(2.07rem, 1.67rem + 2.03vw, 3.55rem);
+    --step-5:  clamp(2.49rem, 1.87rem + 3.11vw, 4.73rem);
+    --step-6:  clamp(2.99rem, 2.06rem + 4.64vw, 6.31rem);
+    --step-7:  clamp(3.58rem, 2.23rem + 6.77vw, 8.41rem);
+    --step-8:  clamp(4.30rem, 2.36rem + 9.71vw, 11.22rem);
+
+    --lh-tight:  1.05;
+    --lh-snug:   1.22;
+    --lh-body:   1.55;
+    --lh-loose:  1.75;
+
+    --ls-tight:  -0.02em;
+    --ls-snug:   -0.01em;
+    --ls-base:    0em;
+    --ls-wide:   0.04em;
+    --ls-wider:  0.12em;
+    --ls-widest: 0.24em;
+
+    /* ─── Spacing (8px baseline) ──────────────────────── */
+    --space-3xs: 0.25rem;
+    --space-2xs: 0.5rem;
+    --space-xs:  0.75rem;
+    --space-s:   1rem;
+    --space-m:   1.5rem;
+    --space-l:   2rem;
+    --space-xl:  3rem;
+    --space-2xl: 4.5rem;
+    --space-3xl: 6.5rem;
+    --space-4xl: 9rem;
+    --space-5xl: 13rem;
+
+    /* Fluid section padding */
+    --section-y: clamp(4rem, 2.5rem + 6vw, 9rem);
+    --gutter:    clamp(1rem, 0.5rem + 2vw, 2.5rem);
+    --container: min(100% - 2 * var(--gutter), 1440px);
+    --container-narrow: min(100% - 2 * var(--gutter), 960px);
+    --container-wide:   min(100% - 2 * var(--gutter), 1760px);
+
+    /* ─── Radius ──────────────────────────────────────── */
+    --r-xs: 2px;
+    --r-s:  4px;
+    --r-m:  8px;
+    --r-l:  14px;
+    --r-xl: 24px;
+    --r-full: 999px;
+
+    /* ─── Shadows ─────────────────────────────────────── */
+    --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.35);
+    --shadow-md: 0 8px 24px -6px rgb(0 0 0 / 0.45), 0 2px 4px rgb(0 0 0 / 0.25);
+    --shadow-lg: 0 24px 60px -12px rgb(0 0 0 / 0.55), 0 4px 12px rgb(0 0 0 / 0.35);
+    --shadow-glow: 0 0 40px rgb(232 106 28 / 0.25);
+    --shadow-gold: 0 0 28px rgb(201 169 97 / 0.28);
+
+    /* ─── Motion ──────────────────────────────────────── */
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+    --ease-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    --dur-fast:   180ms;
+    --dur-base:   280ms;
+    --dur-slow:   600ms;
+    --dur-slower: 900ms;
+
+    /* ─── Z-index ─────────────────────────────────────── */
+    --z-base:     1;
+    --z-sticky:   100;
+    --z-overlay:  500;
+    --z-modal:    900;
+    --z-toast:    1000;
+
+    /* ─── Borders ─────────────────────────────────────── */
+    --border-hair: 1px solid rgb(201 169 97 / 0.18);
+    --border-gold: 1px solid rgb(201 169 97 / 0.42);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :root {
+      --dur-fast:   0ms;
+      --dur-base:   0ms;
+      --dur-slow:   0ms;
+      --dur-slower: 0ms;
+    }
+  }
+}

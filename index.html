@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0B0D14">
+  <title>Mala Muerte · Мексиканский бар в стиле Día de los Muertos</title>
+  <meta name="description" content="Mala Muerte — авторские мескаль-коктейли, аутентичная мексиканская кухня и атмосфера Día de los Muertos. Резервация онлайн.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/pages/home.css">
+</head>
+<body>
+
+<a href="#main" class="skip-link">Пропустить к содержимому</a>
+
+<!-- ═══ Header ═══════════════════════════════════════════ -->
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="index.html" class="site-header__logo" aria-label="Mala Muerte — на главную">
+      Mala<span>·</span><em>Muerte</em>
+    </a>
+
+    <nav class="site-nav" aria-label="Основное меню">
+      <a href="index.html"       class="site-nav__link" aria-current="page">Главная<small>Inicio</small></a>
+      <a href="menu.html"        class="site-nav__link">Меню<small>Carta</small></a>
+      <a href="team.html"        class="site-nav__link">Команда<small>Equipo</small></a>
+      <a href="reservation.html" class="site-nav__link">Резервация<small>Reserva</small></a>
+      <a href="contacts.html"    class="site-nav__link">Контакты<small>Contacto</small></a>
+    </nav>
+
+    <div class="site-header__cta">
+      <a href="reservation.html" class="btn">Резерв<span aria-hidden="true">  ·</span></a>
+    </div>
+
+    <button class="site-header__toggle" aria-label="Открыть меню" aria-expanded="false" aria-controls="site-nav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ═══ Hero ═════════════════════════════════════════════ -->
+<section class="hero" aria-label="Добро пожаловать в Mala Muerte">
+  <div class="hero__media">
+    <video
+      class="hero__video"
+      autoplay muted loop playsinline preload="metadata"
+      poster="assets/images/interior/hero-salon.png"
+      aria-hidden="true">
+      <source src="assets/video/hero-loop.mp4" type="video/mp4">
+    </video>
+    <picture><source srcset="assets/images/interior/hero-salon.avif" type="image/avif"><source srcset="assets/images/interior/hero-salon.webp" type="image/webp"><img src="assets/images/interior/hero-salon.png" class="hero__fallback"  alt="" role="presentation" loading="lazy" decoding="async"></picture>
+  </div>
+  <div class="hero__scrim" aria-hidden="true"></div>
+
+  <img src="assets/svg/papel-picado.svg" alt="" class="hero__papel" aria-hidden="true">
+
+  <div class="hero__content">
+    <div class="hero__title-block reveal">
+      <span class="eyebrow">Ciudad de México · Calle 14</span>
+      <h1 class="hero__title">
+        Mala Muerte
+        <em>es la vida.</em>
+      </h1>
+      <p class="hero__lead">
+        Авторский мескаль-бар в эстетике Día de los Muertos. Где свечи не гаснут, а мариголды не вянут — потому что лучший способ праздновать жизнь это помнить о смерти.
+      </p>
+      <div class="hero__cta">
+        <a href="reservation.html" class="btn btn--lg">Заказать столик</a>
+        <a href="menu.html"        class="btn-arrow">Карта коктейлей</a>
+      </div>
+    </div>
+
+    <aside class="hero__meta reveal" aria-label="Часы работы">
+      <div class="hero__meta-row">
+        <h6>Открыто сегодня</h6>
+        <p>18:00 — 02:00</p>
+      </div>
+      <div class="hero__meta-row">
+        <h6>Резервация</h6>
+        <p>+7 (000) 000-00-00</p>
+      </div>
+      <div class="hero__meta-row">
+        <h6>Dress code</h6>
+        <p>Smart · calaveras welcome</p>
+      </div>
+    </aside>
+  </div>
+
+  <span class="hero__scroll" aria-hidden="true">Scroll</span>
+</section>
+
+<!-- ═══ Story / Philosophy ══════════════════════════════ -->
+<section class="story section">
+  <div class="story__inner">
+    <div class="story__text">
+      <span class="eyebrow reveal">Nuestra filosofía</span>
+      <h2 class="reveal">Мы не боимся <em>смерти —</em><br>мы приглашаем её за стол.</h2>
+      <p class="reveal">
+        Каждый вечер в Mala Muerte начинается с ритуала: бармен зажигает первую свечу на ofrenda, мариачи настраивают струны, а хостес встречает гостей как старых друзей, которых давно не видела.
+      </p>
+      <p class="reveal">
+        Наша карта — это 40+ авторских коктейлей на базе мескаля, текилы и соттолов. Наша кухня — аутентичные рецепты Оахаки, Пуэблы и Юкатана, переосмысленные для тех, кто ищет не просто ужин, а опыт.
+      </p>
+      <a href="team.html" class="btn-arrow reveal">Познакомиться с командой</a>
+    </div>
+
+    <figure class="story__media reveal">
+      <picture><source srcset="assets/images/team/hostess-01.avif" type="image/avif"><source srcset="assets/images/team/hostess-01.webp" type="image/webp"><img src="assets/images/team/hostess-01.png" alt="Isabela — хостес Mala Muerte в образе La Catrina со свечой" loading="lazy" decoding="async"></picture>
+    </figure>
+  </div>
+</section>
+
+<!-- ═══ Team preview ════════════════════════════════════ -->
+<section class="team-preview section">
+  <div class="team-preview__head section__head section__head--split">
+    <div>
+      <span class="eyebrow">Familia Mala Muerte</span>
+      <h2 class="section-title">Семеро, которые <em>встретят вас</em></h2>
+    </div>
+    <a href="team.html" class="btn-arrow">Вся команда</a>
+  </div>
+
+  <div class="team-preview__track" data-hscroll>
+    <article class="team-preview__card card">
+      <div class="card__media"><picture><source srcset="assets/images/team/hostess-01.avif" type="image/avif"><source srcset="assets/images/team/hostess-01.webp" type="image/webp"><img src="assets/images/team/hostess-01.png" alt="Isabela — хостес в образе La Catrina" loading="lazy" decoding="async"></picture></div>
+      <div class="card__body">
+        <h3 class="card__title">Isabela</h3>
+        <p class="card__subtitle">La Anfitriona</p>
+        <p class="card__text">Встречает каждого гостя с тёплой улыбкой и бокалом мескаля на входе.</p>
+      </div>
+    </article>
+    <article class="team-preview__card card">
+      <div class="card__media"><picture><source srcset="assets/images/team/bartender-diego.avif" type="image/avif"><source srcset="assets/images/team/bartender-diego.webp" type="image/webp"><img src="assets/images/team/bartender-diego.png" alt="Diego — head mixologist" loading="lazy" decoding="async"></picture></div>
+      <div class="card__body">
+        <h3 class="card__title">Diego</h3>
+        <p class="card__subtitle">Head Mixologist</p>
+        <p class="card__text">15 лет за стойками от Мехико до Барселоны. Создатель карты.</p>
+      </div>
+    </article>
+    <article class="team-preview__card card">
+      <div class="card__media"><picture><source srcset="assets/images/team/waitress-lucia.avif" type="image/avif"><source srcset="assets/images/team/waitress-lucia.webp" type="image/webp"><img src="assets/images/team/waitress-lucia.png" alt="Lucía — camarera Adelita" loading="lazy" decoding="async"></picture></div>
+      <div class="card__body">
+        <h3 class="card__title">Lucía</h3>
+        <p class="card__subtitle">Camarera · Adelita</p>
+        <p class="card__text">Знает меню наизусть и подскажет пару к любому блюду.</p>
+      </div>
+    </article>
+    <article class="team-preview__card card">
+      <div class="card__media"><picture><source srcset="assets/images/team/waitress-camila.avif" type="image/avif"><source srcset="assets/images/team/waitress-camila.webp" type="image/webp"><img src="assets/images/team/waitress-camila.png" alt="Camila — camarera Huipil" loading="lazy" decoding="async"></picture></div>
+      <div class="card__body">
+        <h3 class="card__title">Camila</h3>
+        <p class="card__subtitle">Camarera · Huipil</p>
+        <p class="card__text">Родом из Оахаки. Рассказывает истории за каждым блюдом.</p>
+      </div>
+    </article>
+    <article class="team-preview__card card">
+      <div class="card__media"><picture><source srcset="assets/images/team/bartender-sofia.avif" type="image/avif"><source srcset="assets/images/team/bartender-sofia.webp" type="image/webp"><img src="assets/images/team/bartender-sofia.png" alt="Sofía — mixologist" loading="lazy" decoding="async"></picture></div>
+      <div class="card__body">
+        <h3 class="card__title">Sofía</h3>
+        <p class="card__subtitle">Mixologist</p>
+        <p class="card__text">Специалист по редким мескалям и дымным коктейлям.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ═══ Signature cocktails ═════════════════════════════ -->
+<section class="cocktails section">
+  <div class="section__head section__head--center">
+    <span class="eyebrow reveal">La Carta</span>
+    <h2 class="section-title reveal">Три коктейля, <em>которые помнят</em></h2>
+  </div>
+
+  <div class="cocktails__grid">
+    <article class="card cocktail-card reveal">
+      <div class="card__media">
+        <picture><source srcset="assets/images/menu/cocktail-negroni.avif" type="image/avif"><source srcset="assets/images/menu/cocktail-negroni.webp" type="image/webp"><img src="assets/images/menu/cocktail-negroni.png" alt="Mezcal Negroni Muerto" loading="lazy" decoding="async"></picture>
+        <span class="cocktail-card__price">₽ 890</span>
+      </div>
+      <div class="card__body">
+        <div class="cocktail-card__meta">
+          <span>Mezcal</span><span>Campari</span><span>Dry Vermouth</span>
+        </div>
+        <h3 class="card__title">Mezcal Negroni Muerto</h3>
+        <p class="card__subtitle">Горечь, дым, память</p>
+        <p class="card__text">Классический Negroni на мескале Espadín с угольным льдом и цедрой жжёного апельсина.</p>
+      </div>
+    </article>
+
+    <article class="card cocktail-card reveal">
+      <div class="card__media">
+        <picture><source srcset="assets/images/menu/cocktail-paloma.avif" type="image/avif"><source srcset="assets/images/menu/cocktail-paloma.webp" type="image/webp"><img src="assets/images/menu/cocktail-paloma.png" alt="Paloma Cempasúchil" loading="lazy" decoding="async"></picture>
+        <span class="cocktail-card__price">₽ 780</span>
+      </div>
+      <div class="card__body">
+        <div class="cocktail-card__meta">
+          <span>Tequila</span><span>Grapefruit</span><span>Marigold</span>
+        </div>
+        <h3 class="card__title">Paloma Cempasúchil</h3>
+        <p class="card__subtitle">Для тех, кто идёт на свет</p>
+        <p class="card__text">Tequila Reposado, свежий грейпфрут, содовая и сироп из лепестков мариголды.</p>
+      </div>
+    </article>
+
+    <article class="card cocktail-card reveal">
+      <div class="card__media">
+        <picture><source srcset="assets/images/menu/cocktail-ancho.avif" type="image/avif"><source srcset="assets/images/menu/cocktail-ancho.webp" type="image/webp"><img src="assets/images/menu/cocktail-ancho.png" alt="Ancho Chile Sour" loading="lazy" decoding="async"></picture>
+        <span class="cocktail-card__price">₽ 840</span>
+      </div>
+      <div class="card__body">
+        <div class="cocktail-card__meta">
+          <span>Mezcal</span><span>Ancho Reyes</span><span>Egg White</span>
+        </div>
+        <h3 class="card__title">Ancho Chile Sour</h3>
+        <p class="card__subtitle">Нежная сила</p>
+        <p class="card__text">Дымный мескаль, ликёр анчо, лайм и белок — шёлковая пена с остринкой перца.</p>
+      </div>
+    </article>
+  </div>
+
+  <div class="divider" role="presentation">
+    <span class="sr-only">раздел</span>
+    <svg viewBox="0 0 64 64" width="40" height="40" aria-hidden="true" stroke="currentColor" fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+      <use href="assets/svg/calavera-divider.svg#calavera"/>
+      <!-- fallback copy -->
+      <path d="M32 8c-9 0-16 6.5-16 15 0 6 3 10 5 12v8l3-3 3 3 2-3 3 3 3-3 3 3v-8c2-2 5-6 5-12 0-8.5-7-15-16-15z"/>
+      <circle cx="26" cy="26" r="3" fill="currentColor" fill-opacity="0.2"/>
+      <circle cx="38" cy="26" r="3" fill="currentColor" fill-opacity="0.2"/>
+    </svg>
+  </div>
+
+  <div style="text-align:center">
+    <a href="menu.html" class="btn btn--ghost">Открыть всю карту</a>
+  </div>
+</section>
+
+<!-- ═══ Atmosphere gallery ══════════════════════════════ -->
+<section class="atmosphere section">
+  <div class="section__head section__head--split" style="width: var(--container-wide); margin-inline: auto;">
+    <div>
+      <span class="eyebrow">Ambiente</span>
+      <h2 class="section-title">Каждый вечер — <em>как праздник.</em></h2>
+    </div>
+    <p style="max-width: 44ch; color: var(--bone-dim); font-size: var(--step-0);">500 свечей, живой мариачи по четвергам, ofrenda в дальнем зале, который никогда не пустеет.</p>
+  </div>
+
+  <div class="atmosphere__grid">
+    <figure class="atmosphere__tile reveal">
+      <picture><source srcset="assets/images/interior/el-salon.avif" type="image/avif"><source srcset="assets/images/interior/el-salon.webp" type="image/webp"><img src="assets/images/interior/el-salon.png" alt="Главный зал Mala Muerte в час вечерней службы" loading="lazy" decoding="async"></picture>
+      <figcaption>El salón principal</figcaption>
+    </figure>
+    <figure class="atmosphere__tile reveal">
+      <picture><source srcset="assets/images/interior/la-barra.avif" type="image/avif"><source srcset="assets/images/interior/la-barra.webp" type="image/webp"><img src="assets/images/interior/la-barra.png" alt="Барная стойка с бутылками мескаля и свечами" loading="lazy" decoding="async"></picture>
+      <figcaption>La barra</figcaption>
+    </figure>
+    <figure class="atmosphere__tile reveal">
+      <picture><source srcset="assets/images/interior/la-ofrenda.avif" type="image/avif"><source srcset="assets/images/interior/la-ofrenda.webp" type="image/webp"><img src="assets/images/interior/la-ofrenda.png" alt="Ofrenda — многоярусный алтарь со свечами и мариголдами" loading="lazy" decoding="async"></picture>
+      <figcaption>La ofrenda</figcaption>
+    </figure>
+    <figure class="atmosphere__tile reveal">
+      <picture><source srcset="assets/images/interior/booth-privado.avif" type="image/avif"><source srcset="assets/images/interior/booth-privado.webp" type="image/webp"><img src="assets/images/interior/booth-privado.png" alt="Приватный VIP-booth с бархатным диваном" loading="lazy" decoding="async"></picture>
+      <figcaption>Booth privado</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ═══ Events ══════════════════════════════════════════ -->
+<section class="events">
+  <div class="section__head section__head--split" style="width: var(--container); margin-inline: auto;">
+    <div>
+      <span class="eyebrow">Eventos</span>
+      <h2 class="section-title">Ближайшие <em>ночи</em></h2>
+    </div>
+    <a href="#" class="btn-arrow">Все события</a>
+  </div>
+
+  <div class="events__list">
+    <article class="events__item reveal">
+      <div class="events__date">02<small>Nov · Сб</small></div>
+      <div class="events__info">
+        <h4>La Noche de los Muertos</h4>
+        <p>Главная ночь года. Лимитированное меню из 12 позиций, живое мариачи, face-painting от La Catrina.</p>
+      </div>
+      <a href="reservation.html" class="btn btn--ghost">Место · ₽ 2500</a>
+    </article>
+    <article class="events__item reveal">
+      <div class="events__date">09<small>Nov · Сб</small></div>
+      <div class="events__info">
+        <h4>Mezcal Tasting · Oaxaca</h4>
+        <p>Дегустация 6 редких мескалей с сомелье из Оахаки. Парные закуски от шефа.</p>
+      </div>
+      <a href="reservation.html" class="btn btn--ghost">Место · ₽ 3800</a>
+    </article>
+    <article class="events__item reveal">
+      <div class="events__date">16<small>Nov · Сб</small></div>
+      <div class="events__info">
+        <h4>DJ Set · Cumbia Noir</h4>
+        <p>Куратор Diego Valdez из Мехико, 4 часа электронной кумбии до рассвета.</p>
+      </div>
+      <a href="reservation.html" class="btn btn--ghost">Место · ₽ 1200</a>
+    </article>
+  </div>
+</section>
+
+<!-- ═══ Reservation band ═══════════════════════════════ -->
+<section class="reserve-band">
+  <svg class="reserve-band__calavera" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="0.8" aria-hidden="true">
+    <path d="M32 6c-9 0-16 6.5-16 15 0 6 3 10 5 12v8l3-3 3 3 2-3 3 3 3-3 3 3v-8c2-2 5-6 5-12 0-8.5-7-15-16-15z"/>
+    <circle cx="26" cy="25" r="3.2" fill="currentColor" fill-opacity="0.3"/>
+    <circle cx="38" cy="25" r="3.2" fill="currentColor" fill-opacity="0.3"/>
+    <path d="M26 40h12M28 43h8M30 46h4"/>
+  </svg>
+
+  <span class="eyebrow" style="justify-content: center;">La Mesa te espera</span>
+  <h2>Столик уже <em>горит вашей свечой.</em></h2>
+  <p>Зарезервируйте место заранее — в пятницу и субботу свободных столиков почти не бывает.</p>
+  <a href="reservation.html" class="btn btn--lg">Заказать столик</a>
+</section>
+
+</main>
+
+<!-- ═══ Footer ═════════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="site-footer__grid">
+    <div class="site-footer__brand">
+      <h3 class="display"><em>Mala</em> Muerte</h3>
+      <p>Авторский мескаль-бар в сердце Центра. Мы помним о смерти — чтобы праздновать жизнь громче.</p>
+    </div>
+    <div class="site-footer__col">
+      <h6>Навигация</h6>
+      <ul>
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="menu.html">Меню</a></li>
+        <li><a href="team.html">Команда</a></li>
+        <li><a href="reservation.html">Резервация</a></li>
+        <li><a href="contacts.html">Контакты</a></li>
+      </ul>
+    </div>
+    <div class="site-footer__col">
+      <h6>Часы</h6>
+      <ul>
+        <li>Пн — Чт · 18:00 — 00:00</li>
+        <li>Пт — Сб · 18:00 — 02:00</li>
+        <li>Вс · 17:00 — 23:00</li>
+      </ul>
+    </div>
+    <div class="site-footer__col">
+      <h6>Связаться</h6>
+      <ul>
+        <li><a href="tel:+70000000000">+7 (000) 000-00-00</a></li>
+        <li><a href="mailto:hola@mala-muerte.bar">hola@mala-muerte.bar</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Telegram</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="site-footer__bottom">
+    <span>© <span data-year>2026</span> Mala Muerte · 18+</span>
+    <span>Чрезмерное употребление алкоголя вредит здоровью</span>
+  </div>
+</footer>
+
+<!-- ═══ Scripts ════════════════════════════════════════ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>if (typeof ScrollTrigger !== 'undefined') gsap.registerPlugin(ScrollTrigger);</script>
+<script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>
