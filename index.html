@@ -276,22 +276,28 @@
   </div>
 
   <div class="atmosphere__grid">
-    <figure class="atmosphere__tile reveal">
+    <button type="button" class="atmosphere__tile reveal" data-lightbox data-src="assets/images/interior/el-salon.png" data-caption="El salón principal">
       <picture><source srcset="assets/images/interior/el-salon.avif" type="image/avif"><source srcset="assets/images/interior/el-salon.webp" type="image/webp"><img src="assets/images/interior/el-salon.png" alt="Главный зал Mala Muerte в час вечерней службы" loading="lazy" decoding="async"></picture>
-      <figcaption>El salón principal</figcaption>
-    </figure>
-    <figure class="atmosphere__tile reveal">
+      <span class="atmosphere__caption">El salón principal</span>
+    </button>
+    <button type="button" class="atmosphere__tile reveal" data-lightbox data-src="assets/images/interior/la-barra.png" data-caption="La barra">
       <picture><source srcset="assets/images/interior/la-barra.avif" type="image/avif"><source srcset="assets/images/interior/la-barra.webp" type="image/webp"><img src="assets/images/interior/la-barra.png" alt="Барная стойка с бутылками мескаля и свечами" loading="lazy" decoding="async"></picture>
-      <figcaption>La barra</figcaption>
-    </figure>
-    <figure class="atmosphere__tile reveal">
+      <span class="atmosphere__caption">La barra</span>
+    </button>
+    <button type="button" class="atmosphere__tile reveal" data-lightbox data-src="assets/images/interior/la-ofrenda.png" data-caption="La ofrenda">
       <picture><source srcset="assets/images/interior/la-ofrenda.avif" type="image/avif"><source srcset="assets/images/interior/la-ofrenda.webp" type="image/webp"><img src="assets/images/interior/la-ofrenda.png" alt="Ofrenda — многоярусный алтарь со свечами и мариголдами" loading="lazy" decoding="async"></picture>
-      <figcaption>La ofrenda</figcaption>
-    </figure>
-    <figure class="atmosphere__tile reveal">
+      <span class="atmosphere__caption">La ofrenda</span>
+    </button>
+    <button type="button" class="atmosphere__tile reveal" data-lightbox data-src="assets/images/interior/booth-privado.png" data-caption="Booth privado">
       <picture><source srcset="assets/images/interior/booth-privado.avif" type="image/avif"><source srcset="assets/images/interior/booth-privado.webp" type="image/webp"><img src="assets/images/interior/booth-privado.png" alt="Приватный VIP-booth с бархатным диваном" loading="lazy" decoding="async"></picture>
-      <figcaption>Booth privado</figcaption>
-    </figure>
+      <span class="atmosphere__caption">Booth privado</span>
+    </button>
+  </div>
+
+  <div class="lightbox" data-lightbox-overlay aria-hidden="true" role="dialog" aria-modal="true" aria-label="Фото во весь экран">
+    <button type="button" class="lightbox__close" data-lightbox-close aria-label="Закрыть">&times;</button>
+    <img class="lightbox__img" alt="" data-lightbox-img>
+    <span class="lightbox__caption" data-lightbox-caption></span>
   </div>
 </section>
 

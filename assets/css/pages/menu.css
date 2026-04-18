@@ -27,6 +27,7 @@
   .page-hero h1 {
     font-size: var(--step-7);
     font-weight: 400;
+    line-height: 0.95;
   }
   .page-hero h1 em {
     font-style: italic;

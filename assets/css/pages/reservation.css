@@ -37,6 +37,7 @@
   .reservation__intro h1 {
     font-size: var(--step-7);
     font-weight: 400;
+    line-height: 0.95;
   }
   .reservation__intro h1 em { font-style: italic; color: var(--marigold); font-weight: 500; }
   .reservation__intro p { font-size: var(--step-1); color: var(--bone-dim); max-width: 48ch; }
@@ -170,7 +171,7 @@
   }
 
   .info-card--quote {
-    padding: var(--space-l) var(--space-l) var(--space-l) var(--space-xl);
+    padding: var(--space-2xl) var(--space-l) var(--space-l);
     position: relative;
     border-color: rgb(232 106 28 / 0.3);
     background: linear-gradient(135deg, rgb(232 106 28 / 0.08), transparent);
@@ -178,18 +179,20 @@
   .info-card--quote::before {
     content: "«";
     position: absolute;
-    top: 10px; left: 16px;
+    top: var(--space-m);
+    left: var(--space-l);
     font-family: var(--font-display);
-    font-size: var(--step-6);
+    font-size: var(--step-4);
     color: var(--marigold);
     line-height: 1;
+    font-style: normal;
   }
   .info-card--quote p {
     font-family: var(--font-display);
     font-style: italic;
     font-size: var(--step-1);
     color: var(--bone);
-    line-height: var(--lh-snug);
+    line-height: 1.35;
     margin-bottom: var(--space-m);
   }
   .info-card--quote cite {

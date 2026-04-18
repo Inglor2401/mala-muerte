@@ -247,36 +247,53 @@
   .cocktail-card__meta span::before { content: "·"; margin-right: var(--space-2xs); color: var(--bone-muted); }
   .cocktail-card__meta span:first-child::before { display: none; }
 
-  /* ─── Atmosphere gallery (masonry) ───────────── */
+  /* ─── Atmosphere gallery ─────────────────────── */
+  /* Layout: big landscape hall on the left (full height), two tall
+     portrait tiles top-right, one wide landscape bar bottom-right.
+     Each slot's aspect matches the image's native aspect so we don't
+     over-crop portraits anymore. */
   .atmosphere__grid {
     width: var(--container-wide);
     margin-inline: auto;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 280px 280px;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 480px 320px;
     gap: var(--space-s);
   }
-  .atmosphere__grid > :nth-child(1) { grid-column: span 2; grid-row: span 2; }
-  .atmosphere__grid > :nth-child(2) { grid-column: span 2; }
-  .atmosphere__grid > :nth-child(3) { grid-column: span 1; }
-  .atmosphere__grid > :nth-child(4) { grid-column: span 1; }
+  .atmosphere__grid > :nth-child(1) { grid-column: 1;      grid-row: 1; }       /* Hall - landscape */
+  .atmosphere__grid > :nth-child(3) { grid-column: 2;      grid-row: 1; }       /* Ofrenda - portrait */
+  .atmosphere__grid > :nth-child(4) { grid-column: 3;      grid-row: 1; }       /* Booth - portrait */
+  .atmosphere__grid > :nth-child(2) { grid-column: 1 / -1; grid-row: 2; }       /* Bar - full-width landscape */
+
   @media (max-width: 900px) {
     .atmosphere__grid {
       grid-template-columns: 1fr 1fr;
-      grid-template-rows: repeat(4, 200px);
+      grid-template-rows: 260px 260px 360px;
     }
-    .atmosphere__grid > :nth-child(1) { grid-column: span 2; grid-row: auto; }
-    .atmosphere__grid > :nth-child(2) { grid-column: span 2; }
-    .atmosphere__grid > :nth-child(3),
-    .atmosphere__grid > :nth-child(4) { grid-column: span 1; }
+    .atmosphere__grid > :nth-child(1) { grid-column: 1 / -1; grid-row: 1; }
+    .atmosphere__grid > :nth-child(2) { grid-column: 1 / -1; grid-row: 3; }
+    .atmosphere__grid > :nth-child(3) { grid-column: 1;      grid-row: 2; }
+    .atmosphere__grid > :nth-child(4) { grid-column: 2;      grid-row: 2; }
   }
+
   .atmosphere__tile {
     position: relative;
     overflow: hidden;
     border-radius: var(--r-l);
     background: var(--ink-2);
+    cursor: zoom-in;
+    border: 0;
+    padding: 0;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    display: block;
+    width: 100%;
+    transition: transform var(--dur-base) var(--ease-out);
   }
+  .atmosphere__tile:hover { transform: translateY(-2px); }
   .atmosphere__tile img,
+  .atmosphere__tile picture,
   .atmosphere__tile svg {
     width: 100%; height: 100%;
     object-fit: cover;
@@ -284,7 +301,7 @@
   }
   .atmosphere__tile:hover img,
   .atmosphere__tile:hover svg { transform: scale(1.05); }
-  .atmosphere__tile figcaption {
+  .atmosphere__tile .atmosphere__caption {
     position: absolute;
     inset: auto 0 0 0;
     padding: var(--space-m);
@@ -293,7 +310,62 @@
     font-style: italic;
     font-size: var(--step-0);
     color: var(--bone);
+    pointer-events: none;
   }
+
+  /* ─── Lightbox overlay ───────────────────────── */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-modal);
+    display: grid;
+    place-items: center;
+    padding: var(--space-m);
+    background: rgb(11 13 20 / 0.94);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--dur-base) var(--ease-out);
+  }
+  .lightbox.is-open { opacity: 1; pointer-events: auto; }
+  .lightbox__img {
+    max-width: min(96vw, 1600px);
+    max-height: 92vh;
+    border-radius: var(--r-l);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid rgb(201 169 97 / 0.25);
+    transform: scale(0.96);
+    transition: transform var(--dur-base) var(--ease-out);
+  }
+  .lightbox.is-open .lightbox__img { transform: scale(1); }
+  .lightbox__caption {
+    position: absolute;
+    left: var(--space-m); right: var(--space-m);
+    bottom: var(--space-m);
+    text-align: center;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: var(--step-1);
+    color: var(--gold-hi);
+    pointer-events: none;
+  }
+  .lightbox__close {
+    position: absolute;
+    top: var(--space-m); right: var(--space-m);
+    width: 48px; height: 48px;
+    border-radius: var(--r-full);
+    background: rgb(11 13 20 / 0.7);
+    border: 1px solid rgb(201 169 97 / 0.4);
+    color: var(--bone);
+    display: grid;
+    place-items: center;
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
+    transition: border-color var(--dur-fast), transform var(--dur-fast);
+  }
+  .lightbox__close:hover { border-color: var(--marigold); transform: rotate(90deg); }
 
   /* ─── Events teaser ──────────────────────────── */
   .events {
@@ -349,43 +421,5 @@
     font-size: var(--step--1);
   }
 
-  /* ─── Reservation band ───────────────────────── */
-  .reserve-band {
-    position: relative;
-    padding-block: var(--space-3xl);
-    margin-top: var(--space-2xl);
-    overflow: hidden;
-    isolation: isolate;
-    text-align: center;
-  }
-  .reserve-band::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background:
-      radial-gradient(ellipse 60% 80% at 50% 50%, rgb(232 106 28 / 0.18), transparent 70%),
-      linear-gradient(180deg, var(--ink-soft), var(--ink));
-  }
-  .reserve-band__calavera {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 420px; height: 420px;
-    color: var(--gold);
-    opacity: 0.08;
-    z-index: -1;
-    pointer-events: none;
-  }
-  .reserve-band h2 {
-    font-size: var(--step-6);
-    margin-bottom: var(--space-m);
-  }
-  .reserve-band h2 em { font-style: italic; color: var(--marigold); font-weight: 500; }
-  .reserve-band p {
-    max-width: 52ch;
-    margin: 0 auto var(--space-xl);
-    color: var(--bone-dim);
-    font-size: var(--step-1);
-  }
+  /* reserve-band styles moved to components.css (shared across pages) */
 }

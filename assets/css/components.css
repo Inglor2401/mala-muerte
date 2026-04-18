@@ -336,6 +336,47 @@
   }
   .divider svg { width: 32px; height: 32px; opacity: 0.7; }
 
+  /* ─── Reservation CTA band (shared, used on all pages) ────────── */
+  .reserve-band {
+    position: relative;
+    padding-block: var(--space-3xl);
+    margin-top: var(--space-2xl);
+    overflow: hidden;
+    isolation: isolate;
+    text-align: center;
+  }
+  .reserve-band::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      radial-gradient(ellipse 60% 80% at 50% 50%, rgb(232 106 28 / 0.18), transparent 70%),
+      linear-gradient(180deg, var(--ink-soft), var(--ink));
+  }
+  /* Decorative calavera is now hidden by default (was creating a huge
+     white skull on pages that didn't load home.css). Keep element in
+     markup so we can re-enable with a feature flag if ever needed. */
+  .reserve-band__calavera {
+    display: none;
+  }
+  .reserve-band h2 {
+    font-size: var(--step-6);
+    line-height: 1.08;
+    margin-inline: auto;
+    max-width: 22ch;
+    margin-bottom: var(--space-l);
+  }
+  .reserve-band h2 em { font-style: italic; color: var(--marigold); font-weight: 500; }
+  .reserve-band .eyebrow { margin-bottom: var(--space-s); }
+  .reserve-band p {
+    max-width: 52ch;
+    margin: 0 auto var(--space-2xl);
+    color: var(--bone-dim);
+    font-size: var(--step-1);
+    line-height: var(--lh-snug);
+  }
+
   /* ─── Site Footer ─────────────────────────────── */
   .site-footer {
     position: relative;

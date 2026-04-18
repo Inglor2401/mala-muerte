@@ -9,7 +9,7 @@
     margin: 0 auto var(--space-3xl);
     text-align: center;
   }
-  .contacts__hero h1 { font-size: var(--step-7); font-weight: 400; margin-block: var(--space-s); }
+  .contacts__hero h1 { font-size: var(--step-7); font-weight: 400; line-height: 0.95; margin-block: var(--space-s); }
   .contacts__hero h1 em { font-style: italic; color: var(--marigold); font-weight: 500; }
   .contacts__hero p { color: var(--bone-dim); font-size: var(--step-1); max-width: 56ch; margin-inline: auto; }
 

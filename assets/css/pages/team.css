@@ -15,7 +15,7 @@
     gap: var(--space-m);
     margin-bottom: var(--space-2xl);
   }
-  .team-hero__inner h1 { font-size: var(--step-7); font-weight: 400; }
+  .team-hero__inner h1 { font-size: var(--step-7); font-weight: 400; line-height: 0.95; }
   .team-hero__inner h1 em { font-style: italic; color: var(--marigold); font-weight: 500; }
   .team-hero__inner p { font-size: var(--step-1); color: var(--bone-dim); max-width: 58ch; text-wrap: balance; }
 
@@ -41,20 +41,34 @@
   }
 
   /* ─── Team grid ──────────────────────────────── */
+  /* Flexbox so the trailing row (3 cards out of 7) auto-centers
+     instead of sticking to the left edge. */
   .team-grid {
     width: var(--container);
     margin: var(--section-y) auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: var(--space-l);
   }
 
   .team-card {
     position: relative;
+    flex: 0 0 calc((100% - 3 * var(--space-l)) / 4);
+    max-width: 340px;
     aspect-ratio: 2/3;
     perspective: 1200px;
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
+  }
+  @media (max-width: 1200px) {
+    .team-card { flex-basis: calc((100% - 2 * var(--space-l)) / 3); }
+  }
+  @media (max-width: 800px) {
+    .team-card { flex-basis: calc((100% - var(--space-l)) / 2); max-width: none; }
+  }
+  @media (max-width: 520px) {
+    .team-card { flex-basis: 100%; }
   }
 
   .team-card__inner {
@@ -212,7 +226,11 @@
     max-width: 70ch;
     margin-bottom: var(--space-2xl);
   }
-  .values__head h2 { font-size: var(--step-5); margin-bottom: var(--space-s); }
+  .values__head h2 {
+    font-size: var(--step-5);
+    line-height: 1.08;
+    margin-bottom: var(--space-s);
+  }
   .values__head h2 em { font-style: italic; color: var(--marigold); font-weight: 500; }
   .values__head p { color: var(--bone-dim); font-size: var(--step-1); }
 

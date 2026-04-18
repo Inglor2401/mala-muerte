@@ -103,15 +103,25 @@ function initStoryReveal() {
   });
 }
 
-// 7. Horizontal team scroll (wheel → x) -----------------------------------
+// 7. Horizontal team track — drag-to-scroll (no wheel hijack) -------------
 function initHorizontalScroll() {
   const track = document.querySelector('[data-hscroll]');
   if (!track) return;
-  track.addEventListener('wheel', (e) => {
-    if (Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
-    e.preventDefault();
-    track.scrollLeft += e.deltaY;
-  }, { passive: false });
+  let isDown = false, startX = 0, startScroll = 0;
+  track.addEventListener('pointerdown', (e) => {
+    isDown = true;
+    track.setPointerCapture(e.pointerId);
+    startX = e.clientX;
+    startScroll = track.scrollLeft;
+    track.style.cursor = 'grabbing';
+  });
+  track.addEventListener('pointermove', (e) => {
+    if (!isDown) return;
+    track.scrollLeft = startScroll - (e.clientX - startX);
+  });
+  ['pointerup','pointercancel','pointerleave'].forEach((ev) =>
+    track.addEventListener(ev, () => { isDown = false; track.style.cursor = ''; })
+  );
 }
 
 // 8. Reservation form (decorative) ----------------------------------------
@@ -171,6 +181,43 @@ function initTeamFlip() {
   });
 }
 
+// 11. Lightbox for atmosphere tiles ---------------------------------------
+function initLightbox() {
+  const overlay = document.querySelector('[data-lightbox-overlay]');
+  const img     = document.querySelector('[data-lightbox-img]');
+  const cap     = document.querySelector('[data-lightbox-caption]');
+  const tiles   = document.querySelectorAll('[data-lightbox]');
+  if (!overlay || !img || !tiles.length) return;
+
+  let lastFocus = null;
+
+  const open = (tile) => {
+    lastFocus = document.activeElement;
+    img.src = tile.dataset.src;
+    img.alt = tile.querySelector('img')?.alt || '';
+    cap.textContent = tile.dataset.caption || '';
+    overlay.classList.add('is-open');
+    overlay.setAttribute('aria-hidden', 'false');
+    overlay.querySelector('[data-lightbox-close]')?.focus();
+    document.body.style.overflow = 'hidden';
+  };
+
+  const close = () => {
+    overlay.classList.remove('is-open');
+    overlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    lastFocus?.focus();
+  };
+
+  tiles.forEach((t) => t.addEventListener('click', () => open(t)));
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay || e.target.matches('[data-lightbox-close]')) close();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && overlay.classList.contains('is-open')) close();
+  });
+}
+
 // ─── Boot ─────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   initLenis();
@@ -183,4 +230,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initReservationForm();
   initYear();
   initTeamFlip();
+  initLightbox();
 });
