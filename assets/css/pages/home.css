@@ -126,8 +126,7 @@
   .hero__scroll {
     position: absolute;
     bottom: var(--space-m);
-    left: 50%;
-    transform: translateX(-50%);
+    right: var(--space-m);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -137,6 +136,9 @@
     letter-spacing: var(--ls-widest);
     text-transform: uppercase;
     z-index: 2;
+  }
+  @media (max-width: 900px) {
+    .hero__scroll { display: none; }
   }
   .hero__scroll::after {
     content: "";

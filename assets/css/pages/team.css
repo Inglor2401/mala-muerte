@@ -159,17 +159,18 @@
     color: var(--bone-dim);
     line-height: var(--lh-body);
     position: relative;
-    padding-left: var(--space-m);
+    padding-left: clamp(1.75rem, 2.5vw + 0.5rem, 2.5rem);
   }
   .team-card__quote::before {
     content: "«";
     position: absolute;
-    left: -2px; top: -10px;
+    left: 0;
+    top: -0.35em;
     font-family: var(--font-display);
-    font-size: var(--step-5);
+    font-size: var(--step-3);
+    line-height: 1;
     color: var(--marigold);
     font-style: normal;
-    line-height: 1;
   }
   .team-card__facts {
     display: flex;
