@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0E2A33"/>
+      <stop offset="100%" stop-color="#0B0D14"/>
+    </linearGradient>
+    <linearGradient id="skull" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F5ECD9"/>
+      <stop offset="100%" stop-color="#C9A961"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="12" fill="url(#bg)"/>
+  <g stroke="#0B0D14" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Marigold petals behind -->
+    <g fill="#E86A1C" fill-opacity="0.9">
+      <ellipse cx="32" cy="8" rx="4" ry="2.5"/>
+      <ellipse cx="23" cy="10" rx="3.5" ry="2.2" transform="rotate(-25 23 10)"/>
+      <ellipse cx="41" cy="10" rx="3.5" ry="2.2" transform="rotate(25 41 10)"/>
+      <ellipse cx="17" cy="14" rx="3" ry="2" transform="rotate(-45 17 14)"/>
+      <ellipse cx="47" cy="14" rx="3" ry="2" transform="rotate(45 47 14)"/>
+    </g>
+    <!-- Skull -->
+    <path d="M32 12c-10 0-18 7-18 16 0 7 3 11 6 13v9l3.5-3.5 3.5 3.5 2.5-3.5 3.5 3.5 3-3.5 3.5 3.5v-9c3-2 6-6 6-13 0-9-8-16-18-16z" fill="url(#skull)"/>
+    <!-- Eye sockets -->
+    <circle cx="25" cy="28" r="4" fill="#0B0D14"/>
+    <circle cx="39" cy="28" r="4" fill="#0B0D14"/>
+    <!-- Gold filigree around eyes -->
+    <circle cx="25" cy="28" r="5" fill="none" stroke="#C9A961" stroke-width="0.8" stroke-dasharray="1.5 1"/>
+    <circle cx="39" cy="28" r="5" fill="none" stroke="#C9A961" stroke-width="0.8" stroke-dasharray="1.5 1"/>
+    <!-- Nose -->
+    <path d="M30 34l2 4 2-4z" fill="#0B0D14"/>
+    <!-- Stitched smile -->
+    <path d="M25 44h14" stroke="#0B0D14" stroke-width="1.4"/>
+    <path d="M27 43v2M30 43v2M33 43v2M36 43v2" stroke="#0B0D14" stroke-width="1.2"/>
+  </g>
+</svg>
