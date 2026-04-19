@@ -40,18 +40,39 @@ function initMobileNav() {
   const toggle = document.querySelector('.site-header__toggle');
   const nav    = document.querySelector('.site-nav');
   if (!toggle || !nav) return;
-  toggle.addEventListener('click', () => {
-    const open = toggle.getAttribute('aria-expanded') === 'true';
-    toggle.setAttribute('aria-expanded', String(!open));
-    nav.classList.toggle('is-open', !open);
-    document.body.style.overflow = !open ? 'hidden' : '';
+
+  const close = () => {
+    toggle.setAttribute('aria-expanded', 'false');
+    nav.classList.remove('is-open');
+    document.body.classList.remove('nav-open');
+    document.body.style.overflow = '';
+  };
+  const open = () => {
+    toggle.setAttribute('aria-expanded', 'true');
+    nav.classList.add('is-open');
+    document.body.classList.add('nav-open');
+    document.body.style.overflow = 'hidden';
+  };
+
+  toggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+    isOpen ? close() : open();
   });
-  nav.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => {
-      toggle.setAttribute('aria-expanded', 'false');
-      nav.classList.remove('is-open');
-      document.body.style.overflow = '';
-    });
+
+  // Close when clicking any nav link
+  nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', close));
+
+  // Close when clicking anywhere outside the nav while it's open
+  document.addEventListener('click', (e) => {
+    if (!nav.classList.contains('is-open')) return;
+    if (nav.contains(e.target) || toggle.contains(e.target)) return;
+    close();
+  });
+
+  // Escape to close
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && nav.classList.contains('is-open')) close();
   });
 }
 

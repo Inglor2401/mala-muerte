@@ -127,22 +127,42 @@
     .site-nav {
       position: fixed;
       inset: 0 0 0 auto;
-      width: min(88vw, 400px);
+      width: min(80vw, 320px);
       background: var(--ink);
       border-left: 1px solid rgb(201 169 97 / 0.2);
       flex-direction: column;
       align-items: flex-start;
       justify-content: center;
-      gap: var(--space-l);
-      padding: var(--space-3xl) var(--space-xl);
+      gap: var(--space-m);
+      padding: var(--space-2xl) var(--space-l);
       transform: translateX(100%);
-      transition: transform var(--dur-slow) var(--ease-out);
+      transition: transform var(--dur-base) var(--ease-out);
       z-index: var(--z-modal);
     }
     .site-nav.is-open { transform: translateX(0); }
-    .site-nav__link { font-size: var(--step-2); }
-    .site-nav__link small { font-size: 0.45em; }
+    .site-nav__link { font-size: var(--step-1); line-height: 1.1; }
+    .site-nav__link small {
+      font-size: 0.6em;
+      opacity: 1;
+      transform: none;
+      margin-top: 0;
+    }
     .site-header__cta { display: none; }
+
+    /* Backdrop behind open nav — click closes menu */
+    body.nav-open::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgb(11 13 20 / 0.6);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      z-index: calc(var(--z-modal) - 1);
+      animation: fade-in var(--dur-base) var(--ease-out);
+    }
+    @keyframes fade-in {
+      from { opacity: 0; } to { opacity: 1; }
+    }
   }
 
   /* ─── Buttons ──────────────────────────────────── */
