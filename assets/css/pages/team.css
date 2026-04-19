@@ -127,91 +127,30 @@
     }
   }
   @media (max-width: 520px) {
-    /* 2-up compact cards. Aspect 3:5 gives enough vertical room to fit
-       the full desktop back-face content (name + role + quote + 3 facts)
-       at downscaled type. Width at 375 viewport: ~165px; height ~275px. */
+    /* 2-up compact cards. On mobile tap opens a detail modal
+       (.team-modal) instead of flipping the card — the back face
+       content wouldn't be readable at 165px wide. */
     .team-card {
       flex-basis: calc((100% - var(--space-s)) / 2);
-      aspect-ratio: 3/5;
+      aspect-ratio: 3/4;
     }
     .team-grid {
       gap: var(--space-s);
-      margin-top: var(--space-m);     /* 24px — same rhythm as hero */
+      margin-top: var(--space-m);
       margin-bottom: var(--space-xl);
     }
 
-    /* Front face — readable name, understated role. */
+    /* Front face only — name/role sized for 165px tile. */
     .team-card__name { font-size: var(--step-1); line-height: 1.05; }
     .team-card__role { font-size: var(--step--2); letter-spacing: 0.01em; }
     .team-card__front-overlay { padding: var(--space-l) var(--space-s) var(--space-s); }
     .team-card__flip-hint {
       top: var(--space-2xs); right: var(--space-2xs);
-      width: 26px; height: 26px; font-size: 12px;
+      width: 28px; height: 28px; font-size: 14px;
     }
-
-    /* Back face — full desktop content at compact mobile scale.
-       Effective content width after padding + flip-hint reserve is ~110px,
-       so body copy is locked at 11px to avoid mid-word wraps.
-       !important on facts display overrides the later-in-source base rule. */
-    .team-card__back {
-      padding: 10px 8px;
-      padding-right: 34px;
-      gap: 8px;
-      justify-content: flex-start;
-    }
-    .team-card__back::before { inset: 6px; border-color: rgb(201 169 97 / 0.25); }
-    .team-card__back::after  {
-      top: 4px; right: 4px;
-      width: 26px; height: 26px; font-size: 12px;
-    }
-
-    .team-card__back-head { gap: 1px !important; }
-    .team-card__back-name { font-size: 14px !important; line-height: 1.05 !important; }
-    .team-card__back-role { font-size: 10px !important; letter-spacing: 0.02em !important; }
-
-    .team-card__quote {
-      font-size: 11px !important;
-      line-height: 1.3 !important;
-      padding-left: 14px !important;
-      margin: 2px 0 !important;
-      /* Line-clamp as a safety net — long quotes end with ellipsis
-         instead of mid-word cut. 4 lines fits within available room. */
-      display: -webkit-box !important;
-      -webkit-line-clamp: 4;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-    .team-card__quote::before {
-      font-size: 20px !important;
-      top: -4px !important;
-      left: 0 !important;
-    }
-
-    .team-card__facts {
-      display: flex !important;
-      flex-direction: column !important;
-      gap: 3px !important;
-      margin-top: auto !important;
-    }
-    /* Stack label above value at this narrow width — base rule forces
-       `grid-template-columns: auto 1fr` inline layout which doesn't fit. */
-    .team-card__fact {
-      display: grid !important;
-      grid-template-columns: 1fr !important;
-      gap: 0 !important;
-      padding-top: 3px !important;
-      border-top: 1px solid rgb(201 169 97 / 0.12) !important;
-    }
-    .team-card__fact dt {
-      font-size: 8px !important;
-      letter-spacing: 0.14em !important;
-      line-height: 1.1 !important;
-    }
-    .team-card__fact dd {
-      font-size: 10px !important;
-      line-height: 1.15 !important;
-      margin-top: 1px !important;
-    }
+    /* Disable the 3D flip transition on touch to avoid a half-flip flash
+       on tap. Click is intercepted by JS → modal open. */
+    .team-card__inner { transition: none !important; }
   }
 
   .team-card__inner {
@@ -428,4 +367,164 @@
     margin-bottom: var(--space-s);
   }
   .value-card p { color: var(--bone-dim); font-size: var(--step--1); }
+
+  /* ─── Team card detail modal (mobile) ─────────────────── */
+  /* Tap on any team card on touch devices opens this full-screen
+     overlay with the full back-face content at comfortable sizes.
+     Desktop keeps the 3D flip — modal is hidden via its default
+     opacity/pointer-events state. */
+  .team-modal {
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-modal);
+    display: grid;
+    place-items: center;
+    padding: var(--space-m);
+    background: rgb(11 13 20 / 0.9);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--dur-base) var(--ease-out);
+  }
+  .team-modal.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .team-modal__dialog {
+    position: relative;
+    width: 100%;
+    max-width: 440px;
+    max-height: calc(100vh - 2 * var(--space-m));
+    overflow-y: auto;
+    background: linear-gradient(160deg, var(--ink-soft), var(--teal-deep) 140%);
+    border: 1px solid rgb(201 169 97 / 0.35);
+    border-radius: var(--r-xl);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(20px) scale(0.96);
+    transition: transform var(--dur-slow) var(--ease-out);
+    -webkit-overflow-scrolling: touch;
+  }
+  .team-modal.is-open .team-modal__dialog {
+    transform: translateY(0) scale(1);
+  }
+
+  .team-modal__close {
+    position: absolute;
+    top: var(--space-s);
+    right: var(--space-s);
+    z-index: 3;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--r-full);
+    background: rgb(11 13 20 / 0.7);
+    border: 1px solid rgb(201 169 97 / 0.4);
+    color: var(--bone);
+    font-size: 24px;
+    line-height: 1;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: transform var(--dur-fast), border-color var(--dur-fast);
+  }
+  .team-modal__close:hover {
+    transform: rotate(90deg);
+    border-color: var(--marigold);
+  }
+
+  .team-modal__photo {
+    aspect-ratio: 4/5;
+    overflow: hidden;
+    background: var(--ink-2);
+    border-top-left-radius: var(--r-xl);
+    border-top-right-radius: var(--r-xl);
+  }
+  .team-modal__photo img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+
+  .team-modal__body {
+    padding: var(--space-l);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m);
+  }
+
+  .team-modal__name {
+    font-family: var(--font-display);
+    font-size: var(--step-4);
+    font-weight: 500;
+    line-height: 1;
+    color: var(--bone);
+    margin: 0;
+  }
+  .team-modal__role {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--gold-hi);
+    font-size: var(--step-1);
+    margin: calc(-1 * var(--space-s)) 0 0; /* sit closer to name */
+  }
+  .team-modal__quote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: var(--step-1);
+    line-height: 1.4;
+    color: var(--bone);
+    padding-left: var(--space-l);
+    position: relative;
+    margin: var(--space-s) 0 0;
+  }
+  .team-modal__quote::before {
+    content: "«";
+    position: absolute;
+    left: 0; top: -0.25em;
+    font-size: var(--step-5);
+    color: var(--marigold);
+    font-style: normal;
+    line-height: 1;
+  }
+  .team-modal__facts {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    margin-top: var(--space-s);
+  }
+  .team-modal__fact {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: var(--space-m);
+    padding-top: var(--space-s);
+    border-top: 1px solid rgb(201 169 97 / 0.15);
+    align-items: baseline;
+  }
+  .team-modal__fact dt {
+    font-family: var(--font-sans);
+    font-size: var(--step--2);
+    font-weight: 600;
+    letter-spacing: var(--ls-widest);
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 0;
+  }
+  .team-modal__fact dd {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: var(--step-0);
+    color: var(--bone);
+    margin: 0;
+  }
+  @media (max-width: 440px) {
+    /* Stack label above value on narrow viewports — "СПЕЦИАЛИЗАЦИЯ" is
+       too wide for an inline grid column at phone sizes. */
+    .team-modal__fact {
+      grid-template-columns: 1fr;
+      gap: var(--space-2xs);
+    }
+    .team-modal__fact dd { font-size: var(--step-0); }
+  }
 }

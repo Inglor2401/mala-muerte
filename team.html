@@ -288,6 +288,22 @@
   <a href="reservation.html" class="btn btn--lg">Заказать столик</a>
 </section>
 
+<!-- ═══ Team card detail modal (mobile) ═════════════════ -->
+<div class="team-modal" data-team-modal aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="team-modal-name">
+  <div class="team-modal__dialog">
+    <button type="button" class="team-modal__close" data-team-modal-close aria-label="Закрыть">&times;</button>
+    <figure class="team-modal__photo">
+      <img data-team-modal-img alt="" loading="lazy">
+    </figure>
+    <div class="team-modal__body">
+      <h3 class="team-modal__name" id="team-modal-name" data-team-modal-name></h3>
+      <p class="team-modal__role"   data-team-modal-role></p>
+      <p class="team-modal__quote"  data-team-modal-quote></p>
+      <dl class="team-modal__facts" data-team-modal-facts></dl>
+    </div>
+  </div>
+</div>
+
 </main>
 
 <footer class="site-footer">

@@ -193,13 +193,93 @@ function initYear() {
   });
 }
 
-// 10. Team card flip (hover / tap) ----------------------------------------
-function initTeamFlip() {
-  document.querySelectorAll('.team-card').forEach((card) => {
+// 10. Team card interaction — desktop flip / mobile modal -----------------
+function initTeamCards() {
+  const modal = document.querySelector('[data-team-modal]');
+  const cards = document.querySelectorAll('.team-card');
+  if (!cards.length) return;
+
+  // Touch / narrow devices get a full-screen detail modal instead of the
+  // 3D flip (back-face content is unreadable at 165px card width).
+  const isTouch = () =>
+    window.matchMedia('(hover: none), (max-width: 520px)').matches;
+
+  // ——— Modal open / close ————————————————————————————————
+  let lastFocus = null;
+
+  const openModal = (card) => {
+    if (!modal) return;
+    lastFocus = document.activeElement;
+
+    // Extract back-face content from the clicked card
+    const img       = card.querySelector('.team-card__front img');
+    const backName  = card.querySelector('.team-card__back-name')?.textContent?.trim() ?? '';
+    const backRole  = card.querySelector('.team-card__back-role')?.textContent?.trim() ?? '';
+    const quote     = card.querySelector('.team-card__quote')?.textContent?.trim() ?? '';
+    const facts     = [...card.querySelectorAll('.team-card__fact')].map((f) => ({
+      dt: f.querySelector('dt')?.textContent?.trim() ?? '',
+      dd: f.querySelector('dd')?.textContent?.trim() ?? '',
+    }));
+
+    // Inject into modal
+    const modalImg   = modal.querySelector('[data-team-modal-img]');
+    const modalName  = modal.querySelector('[data-team-modal-name]');
+    const modalRole  = modal.querySelector('[data-team-modal-role]');
+    const modalQuote = modal.querySelector('[data-team-modal-quote]');
+    const modalFacts = modal.querySelector('[data-team-modal-facts]');
+    if (img && modalImg) {
+      modalImg.src = img.currentSrc || img.src;
+      modalImg.alt = img.alt || '';
+    }
+    if (modalName)  modalName.textContent  = backName;
+    if (modalRole)  modalRole.textContent  = backRole;
+    if (modalQuote) modalQuote.textContent = quote;
+    if (modalFacts) {
+      modalFacts.innerHTML = facts.map((f) =>
+        `<div class="team-modal__fact"><dt>${f.dt}</dt><dd>${f.dd}</dd></div>`
+      ).join('');
+    }
+
+    // Show
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    modal.querySelector('[data-team-modal-close]')?.focus();
+    // Reset scroll position in dialog
+    const dialog = modal.querySelector('.team-modal__dialog');
+    if (dialog) dialog.scrollTop = 0;
+  };
+
+  const closeModal = () => {
+    if (!modal) return;
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    lastFocus?.focus();
+  };
+
+  // ——— Card click: mobile → modal, desktop → flip ———————————
+  cards.forEach((card) => {
     card.addEventListener('click', () => {
-      card.classList.toggle('is-flipped');
+      if (isTouch()) {
+        openModal(card);
+      } else {
+        card.classList.toggle('is-flipped');
+      }
     });
   });
+
+  // ——— Modal dismiss: backdrop / close button / Escape ———————
+  if (modal) {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal || e.target.closest('[data-team-modal-close]')) {
+        closeModal();
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+    });
+  }
 }
 
 // 11. Lightbox for atmosphere tiles ---------------------------------------
@@ -250,6 +330,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initHorizontalScroll();
   initReservationForm();
   initYear();
-  initTeamFlip();
+  initTeamCards();
   initLightbox();
 });
