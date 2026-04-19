@@ -193,16 +193,11 @@ function initYear() {
   });
 }
 
-// 10. Team card interaction — desktop flip / mobile modal -----------------
+// 10. Team card interaction — every click opens the detail modal ---------
 function initTeamCards() {
   const modal = document.querySelector('[data-team-modal]');
   const cards = document.querySelectorAll('.team-card');
   if (!cards.length) return;
-
-  // Touch / narrow devices get a full-screen detail modal instead of the
-  // 3D flip (back-face content is unreadable at 165px card width).
-  const isTouch = () =>
-    window.matchMedia('(hover: none), (max-width: 520px)').matches;
 
   // ——— Modal open / close ————————————————————————————————
   let lastFocus = null;
@@ -258,15 +253,9 @@ function initTeamCards() {
     lastFocus?.focus();
   };
 
-  // ——— Card click: mobile → modal, desktop → flip ———————————
+  // ——— Card click → always open the detail modal ————————————
   cards.forEach((card) => {
-    card.addEventListener('click', () => {
-      if (isTouch()) {
-        openModal(card);
-      } else {
-        card.classList.toggle('is-flipped');
-      }
-    });
+    card.addEventListener('click', () => openModal(card));
   });
 
   // ——— Modal dismiss: backdrop / close button / Escape ———————

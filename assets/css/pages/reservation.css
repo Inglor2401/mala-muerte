@@ -1,7 +1,7 @@
 @layer pages {
   /* ─── Reservation layout ───────────────────────── */
   .reservation {
-    padding-top: calc(var(--space-3xl) + 60px);
+    padding-top: calc(var(--space-3xl) + var(--header-offset));
     padding-bottom: var(--section-y);
     position: relative;
     overflow: hidden;
@@ -21,7 +21,7 @@
     margin-inline: auto;
     display: grid;
     grid-template-columns: 1.1fr 0.9fr;
-    gap: var(--space-3xl);
+    gap: var(--space-2xl);
     align-items: start;
   }
   @media (max-width: 900px) {
@@ -29,23 +29,36 @@
   }
 
   .reservation__intro {
+    width: var(--container-narrow);
+    margin: 0 auto var(--space-2xl);
     display: flex;
     flex-direction: column;
+    align-items: center;
+    text-align: center;
     gap: var(--space-m);
-    margin-bottom: var(--space-xl);
   }
   .reservation__intro h1 {
-    font-size: var(--step-7);
+    font-size: var(--fs-section-title);
     font-weight: 400;
-    line-height: 0.95;
+    line-height: var(--lh-tight);
     word-break: normal;
     overflow-wrap: break-word;
   }
-  .reservation__intro h1 em { font-style: italic; color: var(--marigold); font-weight: 500; }
-  .reservation__intro p { font-size: var(--step-1); color: var(--bone-dim); max-width: 48ch; }
+  .reservation__intro p { font-size: var(--step-1); line-height: var(--lh-snug); color: var(--bone-dim); max-width: 56ch; }
   @media (max-width: 600px) {
-    .reservation__intro h1 { font-size: var(--step-5); }
     .reservation__intro p { font-size: var(--step-0); }
+  }
+
+  .reservation__rules {
+    width: var(--container);
+    margin: var(--space-2xl) auto 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .reservation__rules { grid-template-columns: 1fr; gap: var(--space-l); }
   }
 
   /* ─── Form card ───────────────────────────────── */
@@ -79,8 +92,8 @@
   .field label {
     font-family: var(--font-sans);
     font-size: var(--step--1);
-    font-weight: 500;
-    letter-spacing: var(--ls-wider);
+    font-weight: 600;
+    letter-spacing: var(--ls-eyebrow);
     text-transform: uppercase;
     color: var(--gold);
   }
@@ -97,7 +110,7 @@
     transition: border-color var(--dur-base) var(--ease-out), background var(--dur-base) var(--ease-out);
   }
   .field input::placeholder,
-  .field textarea::placeholder { color: var(--bone-muted); font-style: italic; }
+  .field textarea::placeholder { color: var(--bone-muted); }
   .field input:hover,
   .field select:hover,
   .field textarea:hover { border-color: rgb(201 169 97 / 0.5); }
@@ -109,7 +122,7 @@
     background: rgb(11 13 20 / 0.9);
     box-shadow: 0 0 0 4px rgb(232 106 28 / 0.12);
   }
-  .field textarea { resize: vertical; min-height: 110px; font-family: var(--font-display); font-size: var(--step-0); font-style: italic; }
+  .field textarea { resize: vertical; min-height: 110px; font-family: var(--font-sans); font-size: var(--step-0); line-height: var(--lh-snug); }
 
   .field select {
     appearance: none;
@@ -132,7 +145,6 @@
   .reserve-form__note {
     font-size: var(--step--2);
     color: var(--bone-muted);
-    letter-spacing: var(--ls-wide);
     text-align: center;
   }
 
@@ -154,7 +166,7 @@
     font-weight: 500;
     margin-bottom: var(--space-m);
   }
-  .info-card h3 em { font-style: italic; color: var(--gold-hi); font-weight: 500; }
+  .info-card h3 em { color: var(--gold-hi); }
   .info-card ul {
     display: flex;
     flex-direction: column;
@@ -176,7 +188,7 @@
     font-family: var(--font-sans);
     font-size: var(--step--2);
     font-weight: 600;
-    letter-spacing: var(--ls-widest);
+    letter-spacing: var(--ls-eyebrow);
     text-transform: uppercase;
     color: var(--gold);
   }
@@ -203,15 +215,15 @@
     font-style: italic;
     font-size: var(--step-1);
     color: var(--bone);
-    line-height: 1.35;
+    line-height: var(--lh-snug);
     margin-bottom: var(--space-m);
   }
   .info-card--quote cite {
     font-family: var(--font-sans);
     font-style: normal;
     font-size: var(--step--2);
-    font-weight: 500;
-    letter-spacing: var(--ls-widest);
+    font-weight: 600;
+    letter-spacing: var(--ls-eyebrow);
     text-transform: uppercase;
     color: var(--gold);
   }
@@ -257,7 +269,7 @@
     font-weight: 400;
     margin-bottom: var(--space-s);
   }
-  .modal h2 em { font-style: italic; color: var(--gold-hi); font-weight: 500; }
+  .modal h2 em { color: var(--gold-hi); }
   .modal p {
     color: var(--bone-dim);
     margin: 0 auto var(--space-l);

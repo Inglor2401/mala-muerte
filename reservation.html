@@ -40,7 +40,7 @@
 </head>
 <body>
 
-<a href="#main" class="skip-link">Пропустить к содержимому</a>
+<a href="#main" class="skip-link">Пропустить к содержимому</a>
 
 <header class="site-header">
   <div class="site-header__inner">
@@ -52,7 +52,7 @@
       <a href="reservation.html" class="site-nav__link" aria-current="page">Резервация<small>Reserva</small></a>
       <a href="contacts.html"    class="site-nav__link">Контакты<small>Contacto</small></a>
     </nav>
-    <div class="site-header__cta"><a href="tel:+70000000000" class="btn btn--ghost">Позвонить</a></div>
+    <div class="site-header__cta"><a href="#reserve-form" class="btn">Резерв</a></div>
     <button class="site-header__toggle" aria-label="Открыть меню" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </header>
@@ -60,16 +60,17 @@
 <main id="main">
 
 <section class="reservation">
+
+  <div class="reservation__intro">
+        <span class="eyebrow">Reserva tu mesa</span>
+        <h1>Забронируйте <em>стол, свечу</em> и вечер</h1>
+        <p>Заполните форму — мы подтвердим бронь в течение 15 минут по WhatsApp или звонком. Вечером в пятницу и субботу рекомендуем бронировать за 3–5 дней.</p>
+      </div>
+
   <div class="reservation__grid">
 
     <div>
-      <div class="reservation__intro">
-        <span class="eyebrow">Reserva tu mesa</span>
-        <h1>Забронируйте <em>стол, свечу</em> и вечер.</h1>
-        <p>Заполните форму — мы подтвердим бронь в течение 15 минут по WhatsApp или звонком. Вечером в пятницу и субботу рекомендуем бронировать за 3–5 дней.</p>
-      </div>
-
-      <form class="reserve-form" data-reservation-form novalidate>
+      <form id="reserve-form" class="reserve-form" data-reservation-form novalidate>
         <div class="reserve-form__grid">
 
           <div class="field reserve-form__full">
@@ -137,7 +138,7 @@
           </div>
 
           <div class="field reserve-form__full">
-            <label for="note">Особый повод или пожелания</label>
+            <label for="note">Особый повод или пожелания</label>
             <textarea id="note" name="note" placeholder="День рождения, годовщина, аллергии, встреча с привидением бабушки..."></textarea>
           </div>
 
@@ -145,42 +146,44 @@
 
         <div class="reserve-form__submit">
           <button type="submit" class="btn btn--lg">Забронировать</button>
-          <p class="reserve-form__note">Это демо-форма. Для реальной брони напишите в WhatsApp или позвоните +7 (000) 000-00-00.</p>
+          <p class="reserve-form__note">Это демо-форма. Для реальной брони напишите в WhatsApp или позвоните +7 (000) 000-00-00.</p>
         </div>
       </form>
     </div>
 
     <aside class="reservation__info">
 
-      <article class="info-card">
-        <h3>Что <em>вас ждёт</em></h3>
-        <ul>
-          <li><b>Встреча</b><span>Хостес Isabela проводит к вашему столу и расскажет о вечере</span></li>
-          <li><b>Свеча</b><span>Персональная свеча на столе, которую мы зажжём перед вашим приходом</span></li>
-          <li><b>Первый тост</b><span>Комплимент от бара — мескаль в мини-медной чашке</span></li>
-          <li><b>Сюрприз</b><span>Если повод особый — укажите в форме, подготовим</span></li>
-        </ul>
-      </article>
-
-      <article class="info-card">
-        <h3>Правила <em>дома</em></h3>
-        <ul>
-          <li><b>Бронь</b><span>Держим столик 15 минут. Опаздываете — позвоните, сохраним.</span></li>
-          <li><b>Отмена</b><span>Бесплатно до 4 часов до брони. Далее — 500 ₽ с гостя.</span></li>
-          <li><b>Депозит</b><span>Не берём. Только на события и банкеты от 8 человек.</span></li>
-          <li><b>Возраст</b><span>18+. Паспорт — всегда при себе.</span></li>
-          <li><b>Dress</b><span>Smart casual. Calaveras и вышитые рубахи — welcome.</span></li>
-        </ul>
-      </article>
-
       <article class="info-card info-card--quote">
-        <p>Лучший стол — тот, к которому хочется вернуться. Мы стараемся, чтобы это был каждый стол.</p>
+        <p>Лучший стол — тот, к которому хочется вернуться. Мы стараемся, чтобы это был каждый стол.</p>
         <cite>— Isabela, хостес</cite>
       </article>
 
     </aside>
 
   </div>
+
+  <div class="reservation__rules">
+      <article class="info-card">
+        <h3>Правила <em>дома</em></h3>
+        <ul>
+          <li><b>Бронь</b><span>Держим столик 15 минут. Опаздываете — позвоните, сохраним.</span></li>
+          <li><b>Отмена</b><span>Бесплатно до 4 часов до брони. Далее — 500 ₽ с гостя.</span></li>
+          <li><b>Депозит</b><span>Не берём. Только на события и банкеты от 8 человек.</span></li>
+          <li><b>Возраст</b><span>18+. Паспорт — всегда при себе.</span></li>
+          <li><b>Dress</b><span>Smart casual. Calaveras и вышитые рубахи — welcome.</span></li>
+        </ul>
+      </article>
+      <article class="info-card">
+        <h3>Что <em>вас ждёт</em></h3>
+        <ul>
+          <li><b>Встреча</b><span>Хостес Isabela проводит к вашему столу и расскажет о вечере</span></li>
+          <li><b>Свеча</b><span>Персональная свеча на столе, которую мы зажжём перед вашим приходом</span></li>
+          <li><b>Первый тост</b><span>Комплимент от бара — мескаль в мини-медной чашке</span></li>
+          <li><b>Сюрприз</b><span>Если повод особый — укажите в форме, подготовим</span></li>
+        </ul>
+      </article>
+  </div>
+
 </section>
 
 <!-- ═══ Success modal ══════════════════════════════════ -->
@@ -196,8 +199,8 @@
       <path d="M26 40h12M28 43h8M30 46h4"/>
     </svg>
     <span class="eyebrow" style="justify-content: center;">Espéranos</span>
-    <h2 id="modal-title">Мы вас <em>ждём.</em></h2>
-    <p>Заявка принята. Мы подтвердим бронь по указанному номеру в течение 15 минут. Свеча уже ждёт.</p>
+    <h2 id="modal-title">Мы вас <em>ждём</em></h2>
+    <p>Заявка принята. Мы подтвердим бронь по указанному номеру в течение 15 минут. Свеча уже ждёт.</p>
     <div class="modal__actions">
       <button type="button" class="btn" data-close-modal>Хорошо</button>
       <a href="menu.html" class="btn btn--ghost">Посмотреть меню</a>
@@ -211,7 +214,7 @@
   <div class="site-footer__grid">
     <div class="site-footer__brand">
       <h3 class="display"><em>Mala</em> Muerte</h3>
-      <p>Авторский мескаль-бар в сердце Центра. Мы помним о смерти — чтобы праздновать жизнь громче.</p>
+      <p>Авторский мескаль-бар в сердце Центра. Мы помним о смерти — чтобы праздновать жизнь громче.</p>
     </div>
     <div class="site-footer__col"><h6>Навигация</h6><ul>
       <li><a href="index.html">Главная</a></li><li><a href="menu.html">Меню</a></li>

@@ -2,7 +2,7 @@
   /* ─── Page hero (shared smaller hero) ───────── */
   .page-hero {
     position: relative;
-    padding-block: calc(var(--space-3xl) + 60px) var(--space-2xl);
+    padding-block: calc(var(--space-3xl) + var(--header-offset)) var(--space-2xl);
     text-align: center;
     overflow: hidden;
     isolation: isolate;
@@ -22,31 +22,20 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--space-m);
+    gap: var(--space-s);
   }
   .page-hero h1 {
-    font-size: var(--step-7);
+    font-size: var(--fs-section-title);
     font-weight: 400;
-    line-height: 0.95;
-  }
-  .page-hero h1 em {
-    font-style: italic;
-    color: var(--marigold);
-    font-weight: 500;
+    line-height: var(--lh-tight);
   }
   .page-hero p {
     font-size: var(--step-1);
     color: var(--bone-dim);
+    line-height: var(--lh-snug);
     max-width: 54ch;
     text-wrap: balance;
   }
-  .page-hero__ornament {
-    width: 48px; height: 48px;
-    color: var(--gold);
-    opacity: 0.8;
-    margin-block: var(--space-s);
-  }
-
   /* ─── Menu tabs ─────────────────────────────── */
   .menu-tabs {
     width: var(--container);
@@ -62,8 +51,8 @@
     padding: 0.7em 1.6em;
     font-family: var(--font-sans);
     font-size: var(--step--1);
-    font-weight: 500;
-    letter-spacing: var(--ls-wider);
+    font-weight: 600;
+    letter-spacing: var(--ls-eyebrow);
     text-transform: uppercase;
     color: var(--bone-dim);
     border: 1px solid rgb(201 169 97 / 0.2);
@@ -79,9 +68,10 @@
   }
   .menu-tab sup {
     margin-left: 0.4em;
-    font-family: var(--font-mono);
     color: var(--gold);
-    font-size: 0.7em;
+    font-size: var(--step--2);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: var(--ls-base);
   }
   .menu-tab.is-active sup { color: var(--marigold); }
 
@@ -129,8 +119,7 @@
     display: flex;
     gap: var(--space-xs);
     flex-wrap: wrap;
-    font-family: var(--font-display);
-    font-style: italic;
+    font-family: var(--font-sans);
     font-size: var(--step--1);
     color: var(--gold);
   }
@@ -148,26 +137,22 @@
     font-family: var(--font-display);
     font-size: var(--step-3);
     font-weight: 500;
-    line-height: var(--lh-snug);
+    line-height: var(--lh-tight);
     color: var(--bone);
   }
   .menu-item__price {
-    font-family: var(--font-mono);
+    font-family: var(--font-sans);
     font-size: var(--step-0);
+    font-weight: 600;
     color: var(--gold-hi);
-    letter-spacing: var(--ls-wide);
+    font-variant-numeric: tabular-nums;
     white-space: nowrap;
-  }
-  .menu-item__subtitle {
-    font-family: var(--font-display);
-    font-style: italic;
-    font-size: var(--step-1);
-    color: var(--gold);
   }
   .menu-item__desc {
     font-size: var(--step--1);
     color: var(--bone-dim);
     line-height: var(--lh-body);
+    max-width: 52ch;
   }
 
   .menu-item__origin {
@@ -179,8 +164,6 @@
     gap: var(--space-xs);
     font-family: var(--font-sans);
     font-size: var(--step--2);
-    letter-spacing: var(--ls-widest);
-    text-transform: uppercase;
     color: var(--bone-muted);
   }
   .menu-item__origin::before {
@@ -210,12 +193,21 @@
     margin-inline: auto;
     margin-block: var(--space-3xl) var(--space-xl);
   }
-  .menu-section h2 {
-    font-family: var(--font-display);
-    font-size: var(--step-5);
-    font-weight: 400;
-    margin-bottom: var(--space-s);
+  .menu-section__head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--space-s);
+    margin-bottom: var(--space-xl);
+    max-width: 70ch;
+    margin-inline: auto;
   }
-  .menu-section h2 em { font-style: italic; color: var(--marigold); font-weight: 500; }
-  .menu-section p { color: var(--bone-dim); max-width: 60ch; margin-bottom: var(--space-l); }
+  .menu-section__head h2 {
+    font-family: var(--font-display);
+    font-size: var(--fs-section-title);
+    font-weight: 400;
+    line-height: var(--lh-tight);
+  }
+  .menu-section__head p { color: var(--bone-dim); line-height: var(--lh-snug); max-width: 60ch; }
 }

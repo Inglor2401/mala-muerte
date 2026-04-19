@@ -28,10 +28,8 @@
     --err:         #D63240;
 
     /* ─── Typography ──────────────────────────────────── */
-    --font-display: "Cormorant Garamond", "Playfair Display", "Times New Roman", serif;
-    --font-serif:   "Playfair Display", "Cormorant Garamond", Georgia, serif;
+    --font-display: "Cormorant Garamond", "Times New Roman", Georgia, serif;
     --font-sans:    "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-    --font-mono:    "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
     /* Fluid type scale (min 320px → max 1920px) */
     --step--2: clamp(0.72rem, 0.70rem + 0.08vw, 0.78rem);
@@ -46,17 +44,17 @@
     --step-7:  clamp(3.58rem, 2.23rem + 6.77vw, 8.41rem);
     --step-8:  clamp(4.30rem, 2.36rem + 9.71vw, 11.22rem);
 
-    --lh-tight:  1.05;
-    --lh-snug:   1.22;
-    --lh-body:   1.55;
-    --lh-loose:  1.75;
+    --lh-display: 1.0;
+    --lh-tight:   1.1;
+    --lh-snug:    1.25;
+    --lh-body:    1.55;
 
-    --ls-tight:  -0.02em;
-    --ls-snug:   -0.01em;
-    --ls-base:    0em;
-    --ls-wide:   0.04em;
-    --ls-wider:  0.12em;
-    --ls-widest: 0.24em;
+    --ls-tight:   -0.02em;
+    --ls-base:     0em;
+    --ls-eyebrow:  0.12em;
+
+    --fs-page-title:    clamp(3rem, 1.5rem + 5vw, 6.5rem);
+    --fs-section-title: clamp(1.875rem, 0.9rem + 3vw, 3.75rem);
 
     /* ─── Spacing (8px baseline) ──────────────────────── */
     --space-3xs: 0.25rem;
@@ -74,6 +72,7 @@
     /* Fluid section padding */
     --section-y: clamp(4rem, 2.5rem + 6vw, 9rem);
     --gutter:    clamp(1rem, 0.5rem + 2vw, 2.5rem);
+    --header-offset: 72px;
     --container: min(100% - 2 * var(--gutter), 1440px);
     --container-narrow: min(100% - 2 * var(--gutter), 960px);
     --container-wide:   min(100% - 2 * var(--gutter), 1760px);

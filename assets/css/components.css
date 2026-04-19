@@ -39,7 +39,7 @@
     font-size: var(--step-2);
     line-height: 1;
     color: var(--bone);
-    letter-spacing: var(--ls-snug);
+    letter-spacing: var(--ls-tight);
   }
   .site-header__logo span {
     color: var(--marigold);
@@ -58,7 +58,7 @@
     font-family: var(--font-sans);
     font-size: var(--step--1);
     font-weight: 500;
-    letter-spacing: var(--ls-wider);
+    letter-spacing: var(--ls-eyebrow);
     text-transform: uppercase;
     color: var(--bone-dim);
     padding-block: var(--space-2xs);
@@ -84,11 +84,11 @@
     font-family: var(--font-display);
     font-style: italic;
     font-weight: 400;
-    font-size: 0.72em;
+    font-size: var(--step--2);
     letter-spacing: var(--ls-base);
     color: var(--gold);
     text-transform: none;
-    margin-top: 2px;
+    margin-top: var(--space-3xs);
     opacity: 0;
     transform: translateY(-4px);
     transition: opacity var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out);
@@ -140,9 +140,9 @@
       z-index: var(--z-modal);
     }
     .site-nav.is-open { transform: translateX(0); }
-    .site-nav__link { font-size: var(--step-1); line-height: 1.1; }
+    .site-nav__link { font-size: var(--step-1); line-height: var(--lh-tight); }
     .site-nav__link small {
-      font-size: 0.6em;
+      font-size: var(--step--1);
       opacity: 1;
       transform: none;
       margin-top: 0;
@@ -183,7 +183,7 @@
     font-family: var(--font-sans);
     font-size: var(--step--1);
     font-weight: 600;
-    letter-spacing: var(--ls-wider);
+    letter-spacing: var(--ls-eyebrow);
     text-transform: uppercase;
     color: var(--btn-fg);
     background: var(--btn-bg);
@@ -228,7 +228,7 @@
     font-family: var(--font-sans);
     font-size: var(--step--1);
     font-weight: 600;
-    letter-spacing: var(--ls-wider);
+    letter-spacing: var(--ls-eyebrow);
     text-transform: uppercase;
     color: var(--gold-hi);
     padding-block: var(--space-2xs);
@@ -282,15 +282,15 @@
     font-family: var(--font-display);
     font-size: var(--step-2);
     font-weight: 500;
-    line-height: var(--lh-snug);
+    line-height: var(--lh-tight);
     color: var(--bone);
-    margin-bottom: var(--space-2xs);
+    margin-bottom: var(--space-3xs);
   }
 
   .card__subtitle {
-    font-family: var(--font-display);
-    font-style: italic;
-    font-size: var(--step-0);
+    font-family: var(--font-sans);
+    font-size: var(--step--1);
+    font-weight: 500;
     color: var(--gold);
     margin-bottom: var(--space-s);
   }
@@ -332,14 +332,25 @@
   .section__head--split > :first-child { flex: 1 1 480px; }
 
   .section-title {
-    font-size: var(--step-5);
+    font-size: var(--fs-section-title);
     font-weight: 400;
     line-height: var(--lh-tight);
   }
   .section-title em {
     font-style: italic;
-    color: var(--gold-hi);
+    color: var(--marigold);
     font-weight: 500;
+  }
+
+  /* Centered heads — remove the default 70ch max-width clamp and text-wrap
+     balance so titles flow on one line when they fit. Natural wrap picks up
+     on narrow screens. */
+  .section__head--center {
+    max-width: none;
+    width: 100%;
+  }
+  .section__head--center .section-title {
+    text-wrap: pretty;
   }
 
   /* ─── Divider ─────────────────────────────────── */
@@ -386,17 +397,16 @@
     display: none;
   }
   .reserve-band h2 {
-    font-size: var(--step-6);
-    line-height: 1.08;
+    font-size: var(--fs-section-title);
+    line-height: var(--lh-tight);
     margin-inline: auto;
     max-width: 22ch;
-    margin-bottom: var(--space-l);
+    margin-bottom: var(--space-m);
   }
-  .reserve-band h2 em { font-style: italic; color: var(--marigold); font-weight: 500; }
   .reserve-band .eyebrow { margin-bottom: var(--space-s); }
   .reserve-band p {
     max-width: 52ch;
-    margin: 0 auto var(--space-2xl);
+    margin: 0 auto var(--space-xl);
     color: var(--bone-dim);
     font-size: var(--step-1);
     line-height: var(--lh-snug);
@@ -457,7 +467,7 @@
     flex-wrap: wrap;
     font-size: var(--step--2);
     color: var(--bone-muted);
-    letter-spacing: var(--ls-wide);
+    letter-spacing: var(--ls-base);
   }
 
   /* ─── Placeholder SVG styling ────────────────── */
@@ -469,7 +479,6 @@
   }
   .placeholder text {
     font-family: var(--font-display);
-    font-style: italic;
     fill: rgb(201 169 97 / 0.55);
   }
 }

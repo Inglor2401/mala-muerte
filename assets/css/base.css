@@ -34,7 +34,7 @@
     height: auto;
   }
 
-  img { font-style: italic; background-size: cover; background-position: center; }
+  img { background-size: cover; background-position: center; }
 
   input, button, textarea, select {
     font: inherit;
@@ -55,8 +55,11 @@
 
   ul, ol { list-style: none; }
 
-  /* Typography primitives */
-  h1, h2, h3, h4, h5, h6 {
+  /* Typography primitives
+     Single display family (Cormorant) for h1-h5 + em accent.
+     Inter handles h6/eyebrow/body/meta.
+     Italic is reserved for em, blockquote, .script-italic (logo only). */
+  h1, h2, h3, h4, h5 {
     font-family: var(--font-display);
     font-weight: 500;
     line-height: var(--lh-tight);
@@ -65,25 +68,40 @@
     color: var(--bone);
   }
 
-  h1 { font-size: var(--step-7); font-weight: 400; }
+  h1 { font-size: var(--fs-page-title); font-weight: 400; line-height: var(--lh-display); }
   h2 { font-size: var(--step-5); font-weight: 500; }
   h3 { font-size: var(--step-3); font-weight: 500; }
   h4 { font-size: var(--step-2); font-weight: 500; }
-  h5 { font-size: var(--step-1); font-weight: 600; }
+  h5 { font-size: var(--step-1); font-weight: 500; }
   h6 {
     font-family: var(--font-sans);
     font-size: var(--step--1);
     font-weight: 600;
-    letter-spacing: var(--ls-widest);
+    line-height: var(--lh-tight);
+    letter-spacing: var(--ls-eyebrow);
     text-transform: uppercase;
     color: var(--gold);
+    text-wrap: balance;
+  }
+
+  h1 em, h2 em, h3 em, h4 em, h5 em {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--marigold);
   }
 
   p { text-wrap: pretty; max-width: 65ch; }
 
-  em { font-style: italic; color: var(--bone-dim); }
+  em { font-style: italic; color: var(--gold-hi); }
 
   strong { font-weight: 600; color: var(--gold-hi); }
+
+  blockquote {
+    font-family: var(--font-display);
+    font-style: italic;
+    line-height: var(--lh-snug);
+    color: var(--bone);
+  }
 
   ::selection {
     background: var(--marigold);
@@ -133,8 +151,9 @@
     gap: var(--space-2xs);
     font-family: var(--font-sans);
     font-size: var(--step--1);
-    font-weight: 500;
-    letter-spacing: var(--ls-widest);
+    font-weight: 600;
+    line-height: var(--lh-tight);
+    letter-spacing: var(--ls-eyebrow);
     text-transform: uppercase;
     color: var(--gold);
   }
@@ -150,15 +169,22 @@
   .display {
     font-family: var(--font-display);
     font-weight: 400;
-    line-height: var(--lh-tight);
+    line-height: var(--lh-display);
     letter-spacing: var(--ls-tight);
   }
 
+  /* Reserved for the logo italic-M flourish only. */
   .script-italic {
     font-family: var(--font-display);
     font-style: italic;
     font-weight: 400;
     color: var(--gold-hi);
+  }
+
+  /* Tabular figures for prices, times, dates, day grid. */
+  .num-tabular {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
   }
 
   .hidden { display: none !important; }
@@ -183,7 +209,7 @@
     font-family: var(--font-sans);
     font-size: var(--step--1);
     font-weight: 600;
-    letter-spacing: var(--ls-wider);
+    letter-spacing: var(--ls-eyebrow);
     text-transform: uppercase;
     border-radius: var(--r-full);
     box-shadow: var(--shadow-md);
