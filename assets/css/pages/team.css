@@ -127,12 +127,12 @@
     }
   }
   @media (max-width: 520px) {
-    /* 2-up compact cards. Aspect 2:3 gives the back face enough vertical
-       room to fit the full quote without truncation. Group photo still
-       dominates the visual hierarchy because it's full-bleed and wider. */
+    /* 2-up compact cards. Aspect 3:5 gives enough vertical room to fit
+       the full desktop back-face content (name + role + quote + 3 facts)
+       at downscaled type. Width at 375 viewport: ~165px; height ~275px. */
     .team-card {
       flex-basis: calc((100% - var(--space-s)) / 2);
-      aspect-ratio: 2/3;
+      aspect-ratio: 3/5;
     }
     .team-grid {
       gap: var(--space-s);
@@ -146,50 +146,71 @@
     .team-card__front-overlay { padding: var(--space-l) var(--space-s) var(--space-s); }
     .team-card__flip-hint {
       top: var(--space-2xs); right: var(--space-2xs);
-      width: 28px; height: 28px; font-size: 13px;
+      width: 26px; height: 26px; font-size: 12px;
     }
 
-    /* Back face — name + role at top, single "signature" fact at bottom.
-       Quote is hidden (broke mid-word at 165px wide); all facts except
-       the last one (signature cocktail/dish) are also hidden.
-       !important is needed because the base `.team-card__facts` rule is
-       sourced later in this file and wins at equal specificity. */
+    /* Back face — full desktop content at compact mobile scale.
+       Effective content width after padding + flip-hint reserve is ~110px,
+       so body copy is locked at 11px to avoid mid-word wraps.
+       !important on facts display overrides the later-in-source base rule. */
     .team-card__back {
-      padding: var(--space-m) var(--space-s);
-      padding-right: calc(var(--space-s) + 32px);
-      gap: var(--space-m);
+      padding: 10px 8px;
+      padding-right: 34px;
+      gap: 8px;
       justify-content: flex-start;
     }
-    .team-card__back::before { inset: 10px; border-color: rgb(201 169 97 / 0.3); }
+    .team-card__back::before { inset: 6px; border-color: rgb(201 169 97 / 0.25); }
     .team-card__back::after  {
-      top: var(--space-2xs); right: var(--space-2xs);
-      width: 28px; height: 28px; font-size: 13px;
+      top: 4px; right: 4px;
+      width: 26px; height: 26px; font-size: 12px;
     }
-    .team-card__back-head { gap: var(--space-2xs); }
-    .team-card__back-name { font-size: var(--step-1); line-height: 1.05; }
-    .team-card__back-role { font-size: var(--step--2); }
-    .team-card__quote    { display: none !important; }
-    .team-card__facts    {
+
+    .team-card__back-head { gap: 1px !important; }
+    .team-card__back-name { font-size: 14px !important; line-height: 1.05 !important; }
+    .team-card__back-role { font-size: 10px !important; letter-spacing: 0.02em !important; }
+
+    .team-card__quote {
+      font-size: 11px !important;
+      line-height: 1.3 !important;
+      padding-left: 14px !important;
+      margin: 2px 0 !important;
+      /* Line-clamp as a safety net — long quotes end with ellipsis
+         instead of mid-word cut. 4 lines fits within available room. */
+      display: -webkit-box !important;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .team-card__quote::before {
+      font-size: 20px !important;
+      top: -4px !important;
+      left: 0 !important;
+    }
+
+    .team-card__facts {
       display: flex !important;
-      flex-direction: column;
-      gap: 0;
-      margin-top: auto; /* push signature to bottom of back face */
+      flex-direction: column !important;
+      gap: 3px !important;
+      margin-top: auto !important;
     }
-    .team-card__fact     { display: none !important; }
-    .team-card__fact:last-child {
-      display: flex !important;
-      flex-direction: column;
-      gap: 2px;
-      padding-top: var(--space-xs);
-      border-top: 1px solid rgb(201 169 97 / 0.15);
+    /* Stack label above value at this narrow width — base rule forces
+       `grid-template-columns: auto 1fr` inline layout which doesn't fit. */
+    .team-card__fact {
+      display: grid !important;
+      grid-template-columns: 1fr !important;
+      gap: 0 !important;
+      padding-top: 3px !important;
+      border-top: 1px solid rgb(201 169 97 / 0.12) !important;
     }
-    .team-card__fact:last-child dt {
-      font-size: var(--step--2);
-      letter-spacing: var(--ls-widest);
+    .team-card__fact dt {
+      font-size: 8px !important;
+      letter-spacing: 0.14em !important;
+      line-height: 1.1 !important;
     }
-    .team-card__fact:last-child dd {
-      font-size: var(--step--1);
-      line-height: 1.25;
+    .team-card__fact dd {
+      font-size: 10px !important;
+      line-height: 1.15 !important;
+      margin-top: 1px !important;
     }
   }
 
