@@ -33,11 +33,31 @@
     .team-hero__group { aspect-ratio: 3/2; border-radius: var(--r-l); }
   }
   @media (max-width: 520px) {
-    .team-hero__group { aspect-ratio: 4/5; }
+    /* Full-bleed banner hero on phones. Source group photo is 21:9
+       (much wider than the mobile viewport) — with object-fit:cover the
+       full vertical range of the source would render, so the dark floor
+       area below the cast showed up and read as empty page space. We
+       zoom the img with transform and bias vertically toward the faces. */
+    .team-hero__group {
+      aspect-ratio: 1/1;
+      border-radius: 0;
+      width: 100vw;
+      margin-inline: calc(50% - 50vw);
+    }
+    .team-hero__group img {
+      transform: scale(1.5);
+      transform-origin: 50% 28%;
+    }
+    /* Tone down the bottom gradient on mobile so it doesn't stack with the
+       card section and look like a second void. */
+    .team-hero__group::after { background: linear-gradient(180deg, transparent 80%, rgb(11 13 20 / 0.35)); }
+    /* Close the dead space between the photo and the first card. */
+    .team-hero { padding-bottom: 0; }
   }
   .team-hero__group img,
   .team-hero__group svg {
     width: 100%; height: 100%; object-fit: cover;
+    object-position: center 35%; /* bias crop toward faces, away from floor */
   }
   .team-hero__group::after {
     content: "";
@@ -80,6 +100,13 @@
   }
   @media (max-width: 520px) {
     .team-card { flex-basis: 100%; aspect-ratio: 4/5; }
+    /* Tighten the gap between the full-bleed group photo and the first card
+       (placed here so it wins over `.team-grid { margin: var(--section-y) auto }`
+       which is sourced later in the file). */
+    .team-grid {
+      margin-top: var(--space-l);
+      margin-bottom: var(--space-xl);
+    }
   }
 
   .team-card__inner {

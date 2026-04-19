@@ -149,6 +149,11 @@
     }
     .site-header__cta { display: none; }
 
+    /* Raise the whole header above the backdrop when menu opens,
+       otherwise the site-header stacking context traps the nav below
+       the body::before backdrop → nav appears blurred/unclickable. */
+    body.nav-open .site-header { z-index: calc(var(--z-modal) + 1); }
+
     /* Backdrop behind open nav — click closes menu */
     body.nav-open::before {
       content: "";
