@@ -144,10 +144,35 @@
     .team-card__name { font-size: var(--step-1); line-height: 1.05; }
     .team-card__role { font-size: var(--step--2); letter-spacing: 0.01em; }
     .team-card__front-overlay { padding: var(--space-l) var(--space-s) var(--space-s); }
+
+    /* Replace the desktop ↺ flip hint with a marigold "+" expand pill —
+       universally understood CTA for "tap to open". Subtle pulse draws
+       attention without being annoying. !important overrides the base
+       `.team-card__flip-hint` rule sourced later in this file. */
     .team-card__flip-hint {
-      top: var(--space-2xs); right: var(--space-2xs);
-      width: 28px; height: 28px; font-size: 14px;
+      top: var(--space-xs) !important;
+      right: var(--space-xs) !important;
+      width: 32px !important;
+      height: 32px !important;
+      font-size: 0 !important; /* hide the ↺ text node */
+      background: var(--marigold) !important;
+      border-color: transparent !important;
+      color: var(--ink) !important;
+      box-shadow: 0 6px 16px rgb(232 106 28 / 0.35);
+      animation: tap-pulse 3s ease-in-out infinite;
     }
+    .team-card__flip-hint::before {
+      content: "+";
+      font-size: 22px;
+      font-weight: 300;
+      line-height: 1;
+      margin-top: -2px; /* optical center */
+    }
+    @keyframes tap-pulse {
+      0%, 100% { transform: scale(1);   box-shadow: 0 6px 16px rgb(232 106 28 / 0.35); }
+      50%      { transform: scale(1.08); box-shadow: 0 10px 24px rgb(232 106 28 / 0.55); }
+    }
+
     /* Disable the 3D flip transition on touch to avoid a half-flip flash
        on tap. Click is intercepted by JS → modal open. */
     .team-card__inner { transition: none !important; }
@@ -421,14 +446,18 @@
     background: rgb(11 13 20 / 0.7);
     border: 1px solid rgb(201 169 97 / 0.4);
     color: var(--bone);
-    font-size: 24px;
-    line-height: 1;
     display: grid;
     place-items: center;
+    padding: 0;
     cursor: pointer;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     transition: transform var(--dur-fast), border-color var(--dur-fast);
+  }
+  .team-modal__close svg {
+    width: 16px;
+    height: 16px;
+    display: block;  /* SVG centers perfectly via parent's place-items: center */
   }
   .team-modal__close:hover {
     transform: rotate(90deg);
@@ -436,7 +465,7 @@
   }
 
   .team-modal__photo {
-    aspect-ratio: 4/5;
+    aspect-ratio: 3/2;            /* shorter banner so body content fits */
     overflow: hidden;
     background: var(--ink-2);
     border-top-left-radius: var(--r-xl);
@@ -445,18 +474,19 @@
   .team-modal__photo img {
     width: 100%; height: 100%;
     object-fit: cover;
+    object-position: center 30%;  /* bias toward faces */
   }
 
   .team-modal__body {
-    padding: var(--space-l);
+    padding: var(--space-m) var(--space-l) var(--space-l);
     display: flex;
     flex-direction: column;
-    gap: var(--space-m);
+    gap: var(--space-s);
   }
 
   .team-modal__name {
     font-family: var(--font-display);
-    font-size: var(--step-4);
+    font-size: var(--step-3);
     font-weight: 500;
     line-height: 1;
     color: var(--bone);
@@ -466,24 +496,24 @@
     font-family: var(--font-display);
     font-style: italic;
     color: var(--gold-hi);
-    font-size: var(--step-1);
-    margin: calc(-1 * var(--space-s)) 0 0; /* sit closer to name */
+    font-size: var(--step-0);
+    margin: 2px 0 0;
   }
   .team-modal__quote {
     font-family: var(--font-display);
     font-style: italic;
-    font-size: var(--step-1);
+    font-size: var(--step-0);
     line-height: 1.4;
     color: var(--bone);
-    padding-left: var(--space-l);
+    padding-left: var(--space-m);
     position: relative;
-    margin: var(--space-s) 0 0;
+    margin: var(--space-xs) 0 0;
   }
   .team-modal__quote::before {
     content: "«";
     position: absolute;
-    left: 0; top: -0.25em;
-    font-size: var(--step-5);
+    left: 0; top: -0.2em;
+    font-size: var(--step-4);
     color: var(--marigold);
     font-style: normal;
     line-height: 1;
@@ -491,14 +521,14 @@
   .team-modal__facts {
     display: flex;
     flex-direction: column;
-    gap: var(--space-xs);
-    margin-top: var(--space-s);
+    gap: var(--space-2xs);
+    margin-top: var(--space-2xs);
   }
   .team-modal__fact {
     display: grid;
     grid-template-columns: 130px 1fr;
     gap: var(--space-m);
-    padding-top: var(--space-s);
+    padding-top: var(--space-xs);
     border-top: 1px solid rgb(201 169 97 / 0.15);
     align-items: baseline;
   }
@@ -523,8 +553,10 @@
        too wide for an inline grid column at phone sizes. */
     .team-modal__fact {
       grid-template-columns: 1fr;
-      gap: var(--space-2xs);
+      gap: 2px;
+      padding-top: var(--space-2xs);
     }
-    .team-modal__fact dd { font-size: var(--step-0); }
+    .team-modal__fact dt { font-size: var(--step--2); }
+    .team-modal__fact dd { font-size: var(--step--1); line-height: 1.3; }
   }
 }
