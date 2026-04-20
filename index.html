@@ -72,13 +72,14 @@
 <!-- ═══ Hero ═════════════════════════════════════════════ -->
 <section class="hero" aria-label="Добро пожаловать в Mala Muerte">
   <div class="hero__media">
-    <video
-      class="hero__video"
-      autoplay muted loop playsinline preload="metadata"
-      poster="assets/images/interior/hero-salon.png"
-      aria-hidden="true">
-      <source src="assets/video/hero-loop.mp4" type="video/mp4">
-    </video>
+    <div class="hero__video" data-hero-video aria-hidden="true">
+      <video class="hero__video-layer is-active" autoplay muted playsinline preload="auto" poster="assets/images/interior/hero-salon.png">
+        <source src="assets/video/hero-loop.mp4" type="video/mp4">
+      </video>
+      <video class="hero__video-layer" muted playsinline preload="auto">
+        <source src="assets/video/hero-loop.mp4" type="video/mp4">
+      </video>
+    </div>
     <picture><source srcset="assets/images/interior/hero-salon.avif" type="image/avif"><source srcset="assets/images/interior/hero-salon.webp" type="image/webp"><img src="assets/images/interior/hero-salon.png" class="hero__fallback"  alt="" role="presentation" loading="lazy" decoding="async"></picture>
   </div>
   <div class="hero__scrim" aria-hidden="true"></div>

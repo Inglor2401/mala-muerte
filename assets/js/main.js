@@ -308,6 +308,59 @@ function initLightbox() {
   });
 }
 
+// 12. Hero video crossfade loop ------------------------------------------
+// Two <video> layers play the same clip; near the end of the active one
+// we start the other from 0 and crossfade opacity. The seam where a
+// single <video loop> cuts back to frame 0 becomes a 1s dissolve.
+function initHeroCrossfade() {
+  const wrap = document.querySelector('[data-hero-video]');
+  if (!wrap) return;
+
+  const prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const layers = [...wrap.querySelectorAll('.hero__video-layer')];
+  if (layers.length < 2) return;
+
+  if (prefersReduce) {
+    layers.forEach((v) => { v.pause(); v.removeAttribute('autoplay'); });
+    return;
+  }
+
+  const FADE = 0.9; // seconds of crossfade window
+  layers.forEach((v) => {
+    v.removeAttribute('loop');
+    v.muted = true;
+    v.playsInline = true;
+  });
+
+  const setActive = (el) =>
+    layers.forEach((l) => l.classList.toggle('is-active', l === el));
+
+  // Kick off the first layer; the poster covers any decode delay.
+  layers[0].play().catch(() => {});
+  setActive(layers[0]);
+
+  // Attach a seam-watcher to the currently playing layer. When the clip
+  // is within FADE seconds of its end, fire up the other layer and swap.
+  const watch = (current) => {
+    const partner = layers.find((l) => l !== current);
+    const onTime = () => {
+      const dur = current.duration;
+      if (!dur || !isFinite(dur)) return;
+      if (dur - current.currentTime <= FADE && partner.paused) {
+        partner.currentTime = 0;
+        partner.play()
+          .then(() => setActive(partner))
+          .catch(() => {});
+        current.removeEventListener('timeupdate', onTime);
+        current.addEventListener('ended', () => { current.currentTime = 0; }, { once: true });
+        watch(partner);
+      }
+    };
+    current.addEventListener('timeupdate', onTime);
+  };
+  watch(layers[0]);
+}
+
 // ─── Boot ─────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   initLenis();
@@ -321,4 +374,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initYear();
   initTeamCards();
   initLightbox();
+  initHeroCrossfade();
 });

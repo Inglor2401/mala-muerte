@@ -25,12 +25,25 @@
     height: 100%;
     object-fit: cover;
   }
-  /* Video on top, fallback image underneath. Image shows through
-     during video load and on reduced-motion / video-error. */
+  /* Two <video> layers stacked for a seamless crossfade at each loop
+     seam — avoids the visible "cut" when a single looping video restarts.
+     The fallback image underneath shows during load and when motion is
+     reduced / the video fails. */
   .hero__video {
     position: absolute;
     inset: 0;
   }
+  .hero__video-layer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s linear;
+    pointer-events: none;
+  }
+  .hero__video-layer.is-active { opacity: 1; }
   .hero__fallback {
     position: absolute;
     inset: 0;
