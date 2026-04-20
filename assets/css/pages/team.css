@@ -17,7 +17,7 @@
   }
   .team-hero__eyebrow { order: 1; }
   .team-hero__title   { order: 2; font-size: var(--fs-section-title); font-weight: 400; line-height: var(--lh-tight); max-width: 32ch; }
-  .team-hero__lead    { order: 3; font-size: var(--step-1); line-height: var(--lh-snug); color: var(--bone-dim); max-width: 58ch; text-wrap: balance; margin-bottom: var(--space-2xl); }
+  .team-hero__lead    { order: 3; font-size: var(--step--1); line-height: var(--lh-body); color: var(--bone-dim); max-width: 58ch; text-wrap: balance; margin-bottom: var(--space-2xl); }
   .team-hero__group   {
     order: 4;
     width: var(--container-wide);
@@ -85,7 +85,6 @@
     }
     .team-hero__lead {
       order: 4;
-      font-size: var(--step-0);
       text-align: center;
       padding-inline: var(--gutter);
       margin: 0 auto;
@@ -259,7 +258,7 @@
     line-height: var(--lh-tight);
     max-width: 22ch;
   }
-  .values__head p { color: var(--bone-dim); font-size: var(--step-1); line-height: var(--lh-snug); max-width: 56ch; }
+  .values__head p { color: var(--bone-dim); font-size: var(--step--1); line-height: var(--lh-body); max-width: 56ch; }
 
   .values__grid {
     display: grid;

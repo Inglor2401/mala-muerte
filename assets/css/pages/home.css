@@ -102,8 +102,8 @@
     width: 100%;
   }
   .hero__lead {
-    font-size: var(--step-1);
-    line-height: var(--lh-snug);
+    font-size: var(--step--1);
+    line-height: var(--lh-body);
     color: var(--bone-dim);
     max-width: 60ch;
     margin-inline: auto;
@@ -186,9 +186,12 @@
   }
   @media (max-width: 900px) {
     .story__inner { grid-template-columns: 1fr; gap: var(--space-xl); }
+    .story__text { text-align: center; }
+    .story__text p { margin-inline: auto; }
+    .story__text .btn-arrow { margin-inline: auto; }
   }
   .story__text h2 { font-size: var(--fs-section-title); line-height: var(--lh-tight); margin-bottom: var(--space-m); }
-  .story__text p { font-size: var(--step-1); color: var(--bone-dim); margin-bottom: var(--space-s); max-width: 52ch; }
+  .story__text p { font-size: var(--step--1); line-height: var(--lh-body); color: var(--bone-dim); margin-bottom: var(--space-s); max-width: 52ch; }
   .story__text p:last-of-type { margin-bottom: 0; }
   .story__text .btn-arrow { margin-top: var(--space-l); }
   .story__media {

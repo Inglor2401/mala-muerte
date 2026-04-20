@@ -30,9 +30,9 @@
     line-height: var(--lh-tight);
   }
   .page-hero p {
-    font-size: var(--step-1);
+    font-size: var(--step--1);
     color: var(--bone-dim);
-    line-height: var(--lh-snug);
+    line-height: var(--lh-body);
     max-width: 54ch;
     text-wrap: balance;
   }
@@ -209,5 +209,5 @@
     font-weight: 400;
     line-height: var(--lh-tight);
   }
-  .menu-section__head p { color: var(--bone-dim); line-height: var(--lh-snug); max-width: 60ch; }
+  .menu-section__head p { color: var(--bone-dim); font-size: var(--step--1); line-height: var(--lh-body); max-width: 60ch; }
 }
