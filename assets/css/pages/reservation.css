@@ -16,18 +16,6 @@
       radial-gradient(ellipse 70% 60% at 20% 80%, rgb(14 124 134 / 0.14), transparent 60%);
   }
 
-  .reservation__grid {
-    width: var(--container);
-    margin-inline: auto;
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: var(--space-2xl);
-    align-items: start;
-  }
-  @media (max-width: 900px) {
-    .reservation__grid { grid-template-columns: 1fr; gap: var(--space-xl); }
-  }
-
   .reservation__intro {
     width: var(--container-narrow);
     margin: 0 auto var(--space-2xl);
@@ -49,14 +37,47 @@
     .reservation__intro p { font-size: var(--step-0); }
   }
 
+  /* Form — single column, centered, 680px max. */
+  .reservation__form {
+    width: min(100% - 2 * var(--gutter), 680px);
+    margin-inline: auto;
+    scroll-margin-top: calc(var(--header-offset) + var(--space-m));
+  }
+
+  /* Isabela quote as a centered epigraph below the form. */
+  .info-card--quote.reservation__quote {
+    width: min(100% - 2 * var(--gutter), 640px);
+    margin: var(--space-2xl) auto 0;
+    text-align: center;
+    padding: var(--space-xl) var(--space-l);
+  }
+  .info-card--quote.reservation__quote::before {
+    position: static;
+    display: block;
+    text-align: center;
+    margin-bottom: var(--space-xs);
+    font-size: var(--step-3);
+    left: auto;
+    top: auto;
+  }
+  .info-card--quote.reservation__quote p { margin: 0 auto; max-width: 52ch; }
+  .info-card--quote.reservation__quote cite { display: block; margin-top: var(--space-m); }
+
+  /* Rules and expectations — two equal-height columns. */
   .reservation__rules {
     width: var(--container);
     margin: var(--space-2xl) auto 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--space-xl);
-    align-items: start;
+    align-items: stretch;
   }
+  .reservation__rules .info-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .reservation__rules .info-card ul { flex: 1; }
   @media (max-width: 900px) {
     .reservation__rules { grid-template-columns: 1fr; gap: var(--space-l); }
   }
